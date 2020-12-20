@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">project_22_12</string>
+    <string name="heading">Выберите предметы, к которым хотите готовиться:</string>
+    <string name="russian">Русский язык</string>
+    <string name="math_base">Математика (база)</string>
+    <string name="math_profile">Математика (профиль)</string>
+    <string name="informatics">Информатика</string>
+    <string name="physics">Физика</string>
+    <string name="chemistry">Химия</string>
+    <string name="biology">Биология</string>
+    <string name="social_studies">Обществознание</string>
+    <string name="literature">Литература</string>
+    <string name="geography">География</string>
+    <string name="history">История</string>
+    <string name="ready">Готово</string>
+</resources>
