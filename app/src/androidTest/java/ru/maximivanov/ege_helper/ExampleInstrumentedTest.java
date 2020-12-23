@@ -1,4 +1,4 @@
-package ru.maximivanov.projects.project_22_12;
+package ru.maximivanov.ege_helper;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("ru.maximivanov.projects.project_22_12", appContext.getPackageName());
+        assertEquals("ru.maximivanov.ege_helper", appContext.getPackageName());
     }
 }

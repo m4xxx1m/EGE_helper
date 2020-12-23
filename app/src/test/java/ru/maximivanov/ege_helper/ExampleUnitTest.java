@@ -1,4 +1,4 @@
-package ru.maximivanov.projects.project_22_12;
+package ru.maximivanov.ege_helper;
 
 import org.junit.Test;
 

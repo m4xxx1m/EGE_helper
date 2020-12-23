@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "project_22_12"
+rootProject.name = "EGE_helper"

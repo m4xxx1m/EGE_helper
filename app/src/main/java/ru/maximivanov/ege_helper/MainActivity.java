@@ -1,4 +1,4 @@
-package ru.maximivanov.projects.project_22_12;
+package ru.maximivanov.ege_helper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

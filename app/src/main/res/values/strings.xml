@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">project_22_12</string>
+    <string name="app_name">EGE_helper</string>
     <string name="heading">Выберите предметы, к которым хотите готовиться:</string>
     <string name="russian">Русский язык</string>
     <string name="math_base">Математика (база)</string>
