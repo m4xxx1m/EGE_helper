@@ -41,28 +41,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_in"
-                android:background="@color/myBlue"
-                android:textColor="@color/white"
-                android:onClick="clickSignInButton"
-                android:layout_marginBottom="7dp">
-            </Button>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/sign_up"
                 android:background="@color/myBlue"
-                android:textColor="@color/white"
-                android:onClick="clickSignUpButton">
+                android:textColor="@color/white">
             </Button>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/wrong_password"
-                android:textColor="@color/myRed"
-                android:text="@string/wrong_login_or_password"
-                android:visibility="invisible">
-            </TextView>
         </LinearLayout>
         <Space
             android:layout_width="wrap_content"
