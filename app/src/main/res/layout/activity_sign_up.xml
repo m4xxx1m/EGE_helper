@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
                 android:background="@color/myBlue"
-                android:textColor="@color/white">
+                android:textColor="@color/white"
+                android:onClick="clickSignUpButton">
             </Button>
         </LinearLayout>
         <Space

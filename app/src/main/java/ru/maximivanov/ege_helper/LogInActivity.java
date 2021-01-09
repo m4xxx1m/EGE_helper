@@ -32,7 +32,7 @@ public class LogInActivity extends AppCompatActivity {
         thisPassword = password.getText().toString();
 
         if (thisLogin.equals(correctLogin) && thisPassword.equals(correctPassword)) {
-            Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+            Intent intent = new Intent(LogInActivity.this, MainPageActivity.class);
             startActivity(intent);
         }
         else {

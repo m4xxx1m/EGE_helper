@@ -1,6 +1,8 @@
 package ru.maximivanov.ege_helper;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,5 +19,10 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.Password);
         login.setText(getIntent().getStringExtra("login"));
         password.setText(getIntent().getStringExtra("password"));
+    }
+
+    public void clickSignUpButton(View view) {
+        Intent intent = new Intent(SignUpActivity.this, MainPageActivity.class);
+        startActivity(intent);
     }
 }

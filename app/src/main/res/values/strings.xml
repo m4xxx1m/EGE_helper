@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EGE_helper</string>
+    <string name="app_name">EGE helper</string>
     <string name="heading">Выберите предметы, к которым хотите готовиться:</string>
     <string name="russian">Русский язык</string>
     <string name="math_base">Математика (база)</string>
@@ -18,4 +18,6 @@
     <string name="password">Пароль</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="wrong_login_or_password">Неверный логин или пароль</string>
+    <string name="main_page">Главная</string>
+    <string name="ege_var">Варианты ЕГЭ</string>
 </resources>
