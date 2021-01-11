@@ -20,4 +20,5 @@
     <string name="wrong_login_or_password">Неверный логин или пароль</string>
     <string name="main_page">Главная</string>
     <string name="ege_var">Варианты ЕГЭ</string>
+    <string name="helper">helper</string>
 </resources>
