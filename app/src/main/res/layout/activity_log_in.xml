@@ -29,20 +29,22 @@
                 android:id="@+id/Login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login">
+                android:hint="@string/login"
+                android:inputType="none">
             </EditText>
             <EditText
                 android:id="@+id/Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/password">
+                android:hint="@string/password"
+                android:layout_marginBottom="8dp">
             </EditText>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in"
-                android:background="@color/myBlue"
+                android:background="@drawable/button"
                 android:textColor="@color/white"
                 android:onClick="clickSignInButton"
                 android:layout_marginBottom="7dp">
@@ -51,8 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
-                android:background="@color/myBlue"
-                android:textColor="@color/white"
+                android:background="@drawable/button_2"
+                android:textColor="@color/myBlue"
                 android:onClick="clickSignUpButton">
             </Button>
             <TextView

@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:text="@string/heading">
         </TextView>
         <Space
@@ -46,14 +47,18 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="@string/russian"
+            android:textColor="@android:color/black"
+            android:textSize="14sp">
         </CheckBox>
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="@android:color/black"
             android:text="@string/russian"
             android:textSize="14sp">
-        </TextView>
+        </TextView>-->
     </LinearLayout>
 
     <LinearLayout
@@ -66,14 +71,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/math_base"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -86,14 +88,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/math_profile"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -106,14 +105,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/informatics"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -126,14 +122,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/physics"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -146,14 +139,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/chemistry"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -166,14 +156,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/biology"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -186,14 +173,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/social_studies"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -206,14 +190,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/literature"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -226,14 +207,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/geography"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -246,14 +224,11 @@
         </Space>
         <CheckBox
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </CheckBox>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/history"
+            android:textColor="@android:color/black"
             android:textSize="14sp">
-        </TextView>
+        </CheckBox>
     </LinearLayout>
 
     <LinearLayout
@@ -284,7 +259,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:height="50dp"
-                android:background="@color/myBlue"
+                android:background="@drawable/button"
                 android:text="@string/ready"
                 android:textColor="@color/white">
             </Button>
