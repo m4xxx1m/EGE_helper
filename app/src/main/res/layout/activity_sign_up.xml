@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
-                android:background="@color/myBlue"
+                android:background="@drawable/button"
                 android:textColor="@color/white"
                 android:onClick="clickSignUpButton">
             </Button>
