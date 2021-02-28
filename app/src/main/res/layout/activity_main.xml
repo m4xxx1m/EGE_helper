@@ -1,275 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
     <Space
-        android:layout_height="25dp"
-        android:layout_width="match_parent">
-    </Space>
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="20dp">
-        </Space>
+            android:minWidth="20dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:text="@string/heading"
             android:textColor="@android:color/black"
-            android:text="@string/heading">
-        </TextView>
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
         <Space
-            android:layout_height="match_parent"
             android:layout_width="wrap_content"
-            android:minWidth="20dp">
-        </Space>
+            android:layout_height="match_parent"
+            android:minWidth="20dp"/>
     </LinearLayout>
+
     <Space
         android:layout_width="match_parent"
-        android:layout_height="26dp">
-    </Space>
+        android:layout_height="26dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/russian"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/russian"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/black"
-            android:text="@string/russian"
-            android:textSize="14sp">
-        </TextView>-->
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_marginStart="25dp"
+        android:text="@string/russian"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        <Space-->
+    <!--            android:layout_width="25dp"-->
+    <!--            android:layout_height="match_parent">-->
+    <!--        </Space>-->
+    <!--        <CheckBox-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="@string/math_base"-->
+    <!--            android:textColor="@android:color/black"-->
+    <!--            android:id="@+id/math_base"-->
+    <!--            android:textSize="14sp">-->
+    <!--        </CheckBox>-->
+    <!--    </LinearLayout>-->
+    <CheckBox
+        android:id="@+id/math_base"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/math_base"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/math_base"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/math_profile"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/math_profile"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/math_profile"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/informatics"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/informatics"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/informatics"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/physics"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/physics"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/physics"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/chemistry"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chemistry"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/chemistry"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/biology"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/biology"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/biology"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/social_studies"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/social_studies"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/social_studies"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/literature"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/literature"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/literature"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/geography"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/geography"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/geography"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Space
-            android:layout_width="25dp"
-            android:layout_height="match_parent">
-        </Space>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/history"
-            android:textColor="@android:color/black"
-            android:textSize="14sp">
-        </CheckBox>
-    </LinearLayout>
+        android:layout_marginStart="25dp"
+        android:text="@string/history"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <Space
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_ready"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:minHeight="40dp">
-        </Space>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:minHeight="30dp"
-            android:layout_weight="0.2">
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                tools:ignore="NestedWeights">
-            </Space>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:height="50dp"
-                android:background="@drawable/button"
-                android:text="@string/ready"
-                android:textColor="@color/white">
-            </Button>
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1">
-            </Space>
-        </LinearLayout>
-
-
-    </LinearLayout>
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="25dp"
+            android:height="50dp"
+            android:background="@drawable/button"
+            android:text="@string/ready"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 </LinearLayout>
