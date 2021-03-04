@@ -9,7 +9,7 @@ public class StartPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(StartPageActivity.this, MainActivity.class);
+        Intent intent = new Intent(StartPageActivity.this, MainPageActivity.class);
         startActivity(intent);
         finish();
     }
