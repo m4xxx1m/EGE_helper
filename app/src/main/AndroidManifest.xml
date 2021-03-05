@@ -9,7 +9,20 @@
         </activity>
         <activity android:name=".SignUpActivity">
         </activity>
-        <activity android:name=".MainPageActivity">
+        <activity android:name=".MainPageActivity"
+            android:label="@string/home">
+        </activity>
+        <activity android:name=".TestsPageActivity"
+            android:label="@string/test">
+        </activity>
+        <activity android:name=".TheoryPageActivity"
+            android:label="@string/theory">
+        </activity>
+        <activity android:name=".StatisticPageActivity"
+            android:label="@string/statistic">
+        </activity>
+        <activity android:name=".SettingsPageActivity"
+            android:label="@string/settings">
         </activity>
         <activity android:name=".StartPageActivity"
             android:theme="@style/SplashTheme">
