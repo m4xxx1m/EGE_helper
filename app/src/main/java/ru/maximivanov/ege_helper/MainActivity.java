@@ -1,5 +1,6 @@
 package ru.maximivanov.ege_helper;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (User.isInitialised) {
+            Intent toApp = new Intent(MainActivity.this, MainPageActivity.class);
+            startActivity(toApp);
+            finish();
+        }
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
         checkBox = new CheckBox[checkboxNum];
@@ -40,8 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 User.setUserSubjectsId(chosenSubjects);
+//                finish();
+                Intent toApp = new Intent(MainActivity.this, MainPageActivity.class);
+                startActivity(toApp);
                 finish();
             }
         });
+
     }
 }

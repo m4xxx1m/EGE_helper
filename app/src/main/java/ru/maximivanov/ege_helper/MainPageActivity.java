@@ -2,21 +2,14 @@ package ru.maximivanov.ege_helper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
 
 public class MainPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!User.isInitialised) {
-            Intent choose_subjects = new Intent(MainPageActivity.this, MainActivity.class);
-            startActivity(choose_subjects);
-        }
         setContentView(R.layout.activity_main_page);
     }
     
