@@ -10,6 +10,11 @@ public class TestsPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tests_page_activity);
+        FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.footer);
+        if (footerFragment != null) {
+            footerFragment.changeImg((byte) 2);
+        }
     }
 
     public void onClickFooter(View v) {

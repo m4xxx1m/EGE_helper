@@ -10,6 +10,11 @@ public class StatisticPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistic_page_activity);
+        FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.footer);
+        if (footerFragment != null) {
+            footerFragment.changeImg((byte) 4);
+        }
     }
 
     public void onClickFooter(View v) {

@@ -10,6 +10,11 @@ public class TheoryPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.theory_page_activity);
+        FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.footer);
+        if (footerFragment != null) {
+            footerFragment.changeImg((byte) 3);
+        }
     }
 
     public void onClickFooter(View v) {

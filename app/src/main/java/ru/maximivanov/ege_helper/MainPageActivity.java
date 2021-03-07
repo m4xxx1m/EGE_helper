@@ -11,6 +11,11 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.footer);
+        if (footerFragment != null) {
+            footerFragment.changeImg((byte) 1);
+        }
     }
     
     public void onClickFooter(View v) {
