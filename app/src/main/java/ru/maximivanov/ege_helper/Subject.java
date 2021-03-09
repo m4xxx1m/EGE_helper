@@ -1,20 +1,20 @@
 package ru.maximivanov.ege_helper;
 
 public class Subject {
-    protected byte id;
-    protected String name;
-    public byte taskAmount;
+    protected final byte id;
+    protected final String name;
+    public final byte taskAmount;
     protected Theory theory;
 
     public Subject(byte id) {
-        this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount,
-                SubjectsList.getSubject(id).theory);
+        this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
     }
 
-    public Subject(byte id, String name, byte taskAmount, Theory theory) {
+    public Subject(byte id, String name, byte taskAmount) {
         this.id = id;
         this.name = name;
         this.taskAmount = taskAmount;
-        this.theory = theory;
     }
+
+    public void setTheory() { this.theory = new Theory(id); }
 }

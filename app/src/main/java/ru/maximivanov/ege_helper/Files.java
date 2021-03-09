@@ -3,10 +3,11 @@ package ru.maximivanov.ege_helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
+// класс для работы с файлами
+// работа с файлами реализована в виде словаря, с использованием SharedReferences
 public class Files {
     private static String refKey;
     private static Context context;

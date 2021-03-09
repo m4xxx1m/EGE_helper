@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
+// пока что класс никак не задействован
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText login;

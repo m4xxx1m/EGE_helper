@@ -2,6 +2,7 @@ package ru.maximivanov.ege_helper;
 
 import android.graphics.Bitmap;
 
+// класс работает с конкретными заданиями, из которых состоит тест
 public class Task extends Subject {
     public byte taskNum;
     private String name;

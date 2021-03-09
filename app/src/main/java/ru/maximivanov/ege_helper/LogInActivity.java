@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+// пока что класс никак не задействован
+
 public class LogInActivity extends AppCompatActivity {
 
     // ВРЕМЕННО

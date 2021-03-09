@@ -22,31 +22,6 @@
         android:text="@string/russian"
         android:textColor="@android:color/black"
         android:textSize="14sp"/>
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal">-->
-    <!--        <Space-->
-    <!--            android:layout_width="25dp"-->
-    <!--            android:layout_height="match_parent">-->
-    <!--        </Space>-->
-    <!--        <CheckBox-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:text="@string/math_base"-->
-    <!--            android:textColor="@android:color/black"-->
-    <!--            android:id="@+id/math_base"-->
-    <!--            android:textSize="14sp">-->
-    <!--        </CheckBox>-->
-    <!--    </LinearLayout>-->
-    <CheckBox
-        android:id="@+id/math_base"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:text="@string/math_base"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"/>
 
     <CheckBox
         android:id="@+id/math_profile"
@@ -126,6 +101,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:text="@string/history"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+    <CheckBox
+        android:id="@+id/english"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/english"
         android:textColor="@android:color/black"
         android:textSize="14sp"/>
 

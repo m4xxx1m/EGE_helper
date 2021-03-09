@@ -9,6 +9,7 @@ public class Theory extends Subject {
     }
 
     public void showTheory() {
+        // функция показывает теорию по конкретному заданию
 
     }
 }

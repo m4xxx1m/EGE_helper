@@ -2,6 +2,7 @@ package ru.maximivanov.ege_helper;
 
 import java.util.ArrayList;
 
+// класс содержит информацию о пользователе
 public class User {
     private static ArrayList<Byte> userSubjectsId = new ArrayList<>();
     private Statistic userStatistic;
