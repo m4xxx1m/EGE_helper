@@ -21,26 +21,36 @@ public class MainPageActivity extends AppCompatActivity {
         if (footerFragment != null) {
             footerFragment.changeImg((byte) 1);
         }
-        ((TextView) findViewById(R.id.first_subject)).setText(User.getSubject((byte) 0).name);
-        LinearLayout varLayout = findViewById(R.id.var);
+        TextView firstSubject= findViewById(R.id.first_subject);
+        firstSubject.setText(User.getSubject((byte) 0).name);
+        firstSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        LinearLayout varLayout = findViewById(R.id.var_layout);
         for (int i = 1; i < User.getSubjectsLen(); ++i) {
             View line = new View(this);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.
                     LayoutParams.MATCH_PARENT, dpToPx(3));
-            layoutParams.setMargins(0, dpToPx(5), 0, 0);
-//            line.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.
-//                    LayoutParams.MATCH_PARENT, 5))
-//                    .setMargins(0, 0, 0, 15));
+            layoutParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
+            line.setLayoutParams(layoutParams);
             line.setBackgroundColor(getColor(R.color.myRed));
             varLayout.addView(line);
             TextView subjectName = new TextView(this);
             subjectName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
-                    LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                    LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             subjectName.setClickable(true);
             subjectName.setFocusable(true);
+            subjectName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
             subjectName.setTextSize(18);
             subjectName.setText(User.getSubject((byte) i).name);
-
             varLayout.addView(subjectName);
         }
     }
