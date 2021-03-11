@@ -26,7 +26,7 @@ public class MainPageActivity extends AppCompatActivity {
         firstSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //onclick
             }
         });
         LinearLayout varLayout = findViewById(R.id.var_layout);
