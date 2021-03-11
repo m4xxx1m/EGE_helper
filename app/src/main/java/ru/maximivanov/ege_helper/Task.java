@@ -10,8 +10,13 @@ public class Task extends Subject {
     private Bitmap taskImage;
     private String answer;
 
-    public Task(byte id) {
+    public Task(byte id, byte taskNum) {
         super(id);
+        this.taskNum = taskNum;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public boolean hasImage() {

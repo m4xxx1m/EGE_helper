@@ -29,4 +29,7 @@
     <string name="statistic">Статистика</string>
     <string name="settings">Настройки</string>
     <string name="coming_soon">Coming soon!</string>
+    <string name="improve_result">Улучшите свой результат</string>
+    <string name="last_result">Последний результат</string>
+    <string name="solved_no_variants">Вы пока что не решили ни одного варианта</string>
 </resources>

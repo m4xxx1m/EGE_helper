@@ -9,6 +9,12 @@ public class Test {
     private int testScore; // сколько баллов набрал пользователь
     private ArrayList<Integer> userAnswers;
 
+
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
     public void finish() {
         // закончить выполнение теста
 

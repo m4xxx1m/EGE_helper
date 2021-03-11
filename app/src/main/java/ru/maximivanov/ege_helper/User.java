@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 // класс содержит информацию о пользователе
 public class User {
-    private static ArrayList<Byte> userSubjectsId = new ArrayList<>();
-    private Statistic userStatistic;
-    public static boolean isInitialized = false;
+    private static final ArrayList<Byte> userSubjectsId = new ArrayList<>();
+    public static final Statistic userStatistic = new Statistic();
+    protected static boolean isInitialized = false;
 
     public static byte getSubjectsLen() {
         return (byte) userSubjectsId.size();

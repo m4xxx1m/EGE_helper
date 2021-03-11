@@ -2,7 +2,6 @@ package ru.maximivanov.ege_helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -35,7 +34,6 @@ public class Files {
         }
         chosenSubject.sort(Comparator.<Byte>naturalOrder());
         User.setUserSubjectsId(chosenSubject);
-        Log.d("subjects", chosenSubject.toString());
     }
 
     public static final String[] keys = {"User.isInitialized", "chosenSubjects.size", "chosenSubject"};

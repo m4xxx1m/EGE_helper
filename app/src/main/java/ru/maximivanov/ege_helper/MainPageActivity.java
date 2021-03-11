@@ -53,6 +53,11 @@ public class MainPageActivity extends AppCompatActivity {
             subjectName.setText(User.getSubject((byte) i).name);
             varLayout.addView(subjectName);
         }
+        Task badTask = User.userStatistic.getBadTask();
+        if (badTask != null) {
+            TextView textViewImprove = findViewById(R.id.first_improve);
+            textViewImprove.setText(SubjectsList.getSubject(badTask.id) + " - задание №" + badTask.taskNum);
+        }
     }
     
     public void onClickFooter(View v) {

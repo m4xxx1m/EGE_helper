@@ -14,13 +14,11 @@
             android:paddingVertical="18dp"
             android:paddingHorizontal="25dp"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ege_var"
                 android:textSize="24sp"
-                android:textColor="@android:color/black"
                 android:layout_marginBottom="15dp">
             </TextView>
             <LinearLayout
@@ -39,7 +37,63 @@
                     android:textSize="18sp"
                     android:focusable="true">
                 </TextView>
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="3dp"-->
+<!--                    android:layout_marginVertical="5dp"-->
+<!--                    android:background="@color/myRed"/>-->
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/improve_result"
+                android:textSize="24sp"
+                android:layout_marginBottom="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:id="@+id/improve_layout"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/first_improve"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_result"
+                android:textSize="24sp"
+                android:layout_marginBottom="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:id="@+id/last_result"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/first_last_result"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:textSize="18sp"
+                    android:text="@string/solved_no_variants"
+                />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
     <fragment
