@@ -25,7 +25,8 @@
         <activity android:name=".SettingsPageActivity"
             android:label="@string/settings">
         </activity>
-        <activity android:name=".TestActivity">
+        <activity android:name=".TestActivity"
+            android:theme="@style/TestTheme">
         </activity>
         <activity android:name=".StartPageActivity"
             android:theme="@style/SplashTheme">

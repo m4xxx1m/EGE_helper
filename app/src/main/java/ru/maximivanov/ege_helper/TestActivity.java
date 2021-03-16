@@ -1,14 +1,16 @@
 package ru.maximivanov.ege_helper;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestActivity extends AppCompatActivity {
@@ -16,8 +18,8 @@ public class TestActivity extends AppCompatActivity {
     private byte id;
     private boolean isCommon;
     private int taskAmount;
-    private final Activity act = this;
     Handler handler;
+    ArrayList<TaskFragment> taskArr;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -25,68 +27,74 @@ public class TestActivity extends AppCompatActivity {
         id = getIntent().getByteExtra("subject", (byte) 0);
         isCommon = getIntent().getBooleanExtra("isCommon", true);
         if (isCommon) {
+            CommonTestThread thread = new CommonTestThread();
+            thread.start();
             taskAmount = User.getSubject(id).taskAmount;
+            taskArr = new ArrayList<>(taskAmount);
+            taskArr.add(0, null);
             test = new Test(id);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             for (byte i = 1; i <= taskAmount; ++i) {
-                TaskFragment fragment = new TaskFragment();
-                ft.add(R.id.place_holder, fragment, String.valueOf(i));
+                taskArr.add(i, new TaskFragment());
+                ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
             }
+            FinishButtonFragment buttonFragment = new FinishButtonFragment();
+            ft.add(R.id.place_holder, buttonFragment);
             ft.commit();
-            CommonTestThread thread = new CommonTestThread();
-            thread.start();
+
             handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
+                    RelativeLayout rl = findViewById(R.id.test_layout);
+                    rl.removeView(findViewById(R.id.loading));
+                    test.set(getSupportFragmentManager());
+                    buttonFragment.getButton().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            for (int i = 1; i <= taskAmount; ++i) {
+                                String userAnswer = taskArr.get(i).getUserAnswer();
+                                StringBuilder correctAnswer = new StringBuilder();
+                                correctAnswer.append(test.getTasks().get(i-1).getAnswer());
+                                if (userAnswer.equals(correctAnswer.toString())) {
 
+                                }
+                            }
+                            test.finish();
+                        }
+                    });
                 }
             };
-//            while (thread.isAlive()) {
-//            }
-//            test.set(getSupportFragmentManager());
         }
     }
 
     class CommonTestThread extends Thread {
         @Override
         public void run() {
-
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            synchronized (act) {
-                for (byte i = 1; i <= taskAmount; ++i) {
-//                TaskFragment fragment = new TaskFragment();
-                    URL url = null;
-                    try {
-                        url = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" + i + "/"
-                                + 0 + ".html");
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                    Scanner in = null;
-                    try {
-                        assert url != null;
-                        in = new Scanner((InputStream) url.getContent());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    assert in != null;
-                    boolean hasImage = Boolean.parseBoolean(in.next());
-                    String answer = in.next();
-                    StringBuilder str = new StringBuilder();
-                    while (in.hasNextLine()) {
-                        str.append(in.nextLine()).append("\n");
-                    }
-                    test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
-//                ft.add(R.id.place_holder, fragment);
-//                ft.commit();
-
-//                TaskFragment fragment = (TaskFragment) getSupportFragmentManager()
-//                        .findFragmentByTag(String.valueOf(i));
-//                assert fragment != null;
-//                fragment.set(i, i, User.getSubject(id).name, String.valueOf(str));
+            for (byte i = 1; i <= taskAmount; ++i) {
+                URL url = null;
+                try {
+                    url = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" + i + "/"
+                            + 0 + ".html");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
                 }
-                //notifyAll();
+                Scanner in = null;
+                try {
+                    assert url != null;
+                    in = new Scanner((InputStream) url.getContent());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                assert in != null;
+                boolean hasImage = Boolean.parseBoolean(in.next());
+                String answer = in.next();
+                StringBuilder str = new StringBuilder();
+                while (in.hasNextLine()) {
+                    str.append(in.nextLine()).append("\n");
+                }
+                test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
             }
+            handler.sendEmptyMessage(1);
         }
     }
 }

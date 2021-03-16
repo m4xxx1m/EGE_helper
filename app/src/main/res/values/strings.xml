@@ -33,4 +33,6 @@
     <string name="last_result">Последний результат</string>
     <string name="solved_no_variants">Вы пока что не решили ни одного варианта</string>
     <string name="answer">Ответ</string>
+    <string name="finish">Завершить</string>
+    <string name="loading">Загрузка...</string>
 </resources>

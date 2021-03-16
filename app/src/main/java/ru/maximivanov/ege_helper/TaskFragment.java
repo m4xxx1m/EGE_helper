@@ -9,19 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class TaskFragment extends Fragment {
-    String answer;
-    TextView taskNum;
-    TextView taskName;
-    TextView taskText;
-    EditText editText;
+//    private String answer;
+//    private TextView taskNum;
+    private TextView taskName;
+    private TextView taskText;
+    private EditText editText;
+    int num;
     public TaskFragment() {
 
     }
 
+    public String getUserAnswer() {
+        return editText.getText().toString();
+    }
+
     public void set(int num, int taskNum, String taskName, String taskText) {
-//        this.taskNum = getActivity().findViewById(R.id.taskNum);
+        this.num = num;
         try {
-            this.taskNum.setText(String.valueOf(num));
             this.taskName.setText("№" + taskNum + " - " + taskName);
             this.taskText.setText(taskText);
         } catch (Exception e) {
@@ -46,7 +50,6 @@ public class TaskFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_task, container, false);
         taskName = v.findViewById(R.id.taskName);
-        taskNum = v.findViewById(R.id.taskNum);
         taskText = v.findViewById(R.id.taskText);
         editText = v.findViewById(R.id.edit_text);
 

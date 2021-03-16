@@ -11,6 +11,10 @@ public class Task extends Subject {
     private String answer;
     private boolean hasImage;
 
+    public String getAnswer() {
+        return answer;
+    }
+
     public Task(byte id, byte taskNum, boolean hasImage, String name, String taskText, String answer) {
         super(id);
         this.taskNum = taskNum;
