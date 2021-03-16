@@ -8,11 +8,11 @@ public class Subject {
     protected final String name;
     public final byte taskAmount;
     protected Theory theory;
-    protected int[] tasksWrongAnswers;
+    protected int[] tasksAnswersScore;
     public static final int COMMON_TEST = 0;
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
-        tasksWrongAnswers = new int[taskAmount];
+        tasksAnswersScore = new int[taskAmount];
     }
 
     public void makeCommonTest(Context context) {
@@ -26,7 +26,7 @@ public class Subject {
         this.id = id;
         this.name = name;
         this.taskAmount = taskAmount;
-        tasksWrongAnswers = new int[taskAmount];
+        tasksAnswersScore = new int[taskAmount];
     }
 
     public void setTheory() { this.theory = new Theory(id); }

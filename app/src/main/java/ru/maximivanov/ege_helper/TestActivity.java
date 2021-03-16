@@ -2,6 +2,7 @@ package ru.maximivanov.ege_helper;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -42,7 +43,7 @@ public class TestActivity extends AppCompatActivity {
             ft.add(R.id.place_holder, buttonFragment);
             ft.commit();
 
-            handler = new Handler() {
+            handler = new Handler(Looper.myLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
                     RelativeLayout rl = findViewById(R.id.test_layout);
@@ -53,10 +54,30 @@ public class TestActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             for (int i = 1; i <= taskAmount; ++i) {
                                 String userAnswer = taskArr.get(i).getUserAnswer();
-                                StringBuilder correctAnswer = new StringBuilder();
-                                correctAnswer.append(test.getTasks().get(i-1).getAnswer());
-                                if (userAnswer.equals(correctAnswer.toString())) {
-
+                                String correctAnswer = test.getTasks().get(i-1).getAnswer();
+                                if (userAnswer.equals(correctAnswer)) {
+                                    test.incrementTestScore();
+                                    SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                                }
+                                else {
+                                    int oldJ = -1, thisJ = 0;
+                                    boolean isRight = false;
+                                    for (int j = 0; j < correctAnswer.length(); ++j) {
+                                        if (correctAnswer.charAt(j) == '|') {
+                                            if (userAnswer.equals(correctAnswer
+                                                    .substring(oldJ+1, j))) {
+                                                test.incrementTestScore();
+                                                SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                                                isRight = true;
+                                                break;
+                                            }
+                                            oldJ = thisJ;
+                                            thisJ = j;
+                                        }
+                                    }
+                                    if (!isRight) {
+                                        SubjectsList.getSubject(id).tasksAnswersScore[i-1]--;
+                                    }
                                 }
                             }
                             test.finish();

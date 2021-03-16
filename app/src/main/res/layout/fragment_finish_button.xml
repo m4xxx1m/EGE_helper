@@ -5,15 +5,16 @@
     tools:context=".FinishButtonFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:paddingBottom="10dp">
     <Button
         android:id="@+id/button_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
         android:height="50dp"
         android:background="@drawable/button"
         android:text="@string/finish"
         android:layout_alignParentBottom="true"
         android:textColor="@color/white" />
 </RelativeLayout>
+<!--    android:paddingHorizontal="15dp"-->

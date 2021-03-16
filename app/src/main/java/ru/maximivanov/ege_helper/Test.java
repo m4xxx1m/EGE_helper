@@ -16,6 +16,10 @@ public class Test {
         tasks = new ArrayList<>(taskAmount);
     }
 
+    public void incrementTestScore() {
+        testScore++;
+    }
+
     public void set(FragmentManager fm) {
         for (byte i = 1; i <= taskAmount; ++i) {
             TaskFragment fragment = (TaskFragment) fm
