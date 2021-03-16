@@ -66,6 +66,7 @@
                     android:id="@+id/first_improve"
                     android:clickable="true"
                     android:focusable="true"
+                    android:text="@string/solved_no_variants"
                     android:textSize="18sp"/>
             </LinearLayout>
 

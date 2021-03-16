@@ -26,7 +26,7 @@ public class MainPageActivity extends AppCompatActivity {
         firstSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onclick
+                User.getSubject((byte) 0).makeCommonTest(MainPageActivity.this);
             }
         });
         LinearLayout varLayout = findViewById(R.id.var_layout);
@@ -43,10 +43,11 @@ public class MainPageActivity extends AppCompatActivity {
                     LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             subjectName.setClickable(true);
             subjectName.setFocusable(true);
+            final byte thisSubjectId = (byte) i;
             subjectName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    User.getSubject((byte) thisSubjectId).makeCommonTest(MainPageActivity.this);
                 }
             });
             subjectName.setTextSize(18);
