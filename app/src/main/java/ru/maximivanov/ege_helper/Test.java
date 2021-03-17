@@ -1,5 +1,7 @@
 package ru.maximivanov.ege_helper;
 
+import android.content.Context;
+import android.content.Intent;
 import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 
@@ -25,7 +27,14 @@ public class Test {
             TaskFragment fragment = (TaskFragment) fm
                     .findFragmentByTag(String.valueOf(i));
             assert fragment != null;
-            fragment.set(i, i, User.getSubject(id).name, String.valueOf(tasks.get(i-1).getTaskText()));
+            try {
+                fragment.set(i, i, User.getSubject(id).tasksNames[i-1],
+                        String.valueOf(tasks.get(i-1).getTaskText()));
+            }
+            catch (NullPointerException e) {
+                fragment.set(i, i, User.getSubject(id).name,
+                        String.valueOf(tasks.get(i-1).getTaskText()));
+            }
         }
     }
 
@@ -37,8 +46,10 @@ public class Test {
         return tasks;
     }
 
-    public void finish() {
+    public void finish(TestActivity context) {
         // закончить выполнение теста
-
+        Intent finishTestIntent = new Intent(context, TestFinishActivity.class);
+        context.startActivity(finishTestIntent);
+        context.finish();
     }
 }

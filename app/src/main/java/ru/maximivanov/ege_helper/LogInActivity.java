@@ -34,8 +34,7 @@ public class LogInActivity extends AppCompatActivity {
         thisPassword = password.getText().toString();
 
         if (thisLogin.equals(correctLogin) && thisPassword.equals(correctPassword)) {
-            Intent intent = new Intent(LogInActivity.this, MainPageActivity.class);
-            startActivity(intent);
+            finish();
         }
         else {
             wrong_login_or_password.setVisibility(View.VISIBLE);

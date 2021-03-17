@@ -1,6 +1,5 @@
 package ru.maximivanov.ege_helper;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -23,7 +22,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void clickSignUpButton(View view) {
-        Intent intent = new Intent(SignUpActivity.this, MainPageActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

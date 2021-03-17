@@ -17,10 +17,13 @@ import java.util.Scanner;
 public class TestActivity extends AppCompatActivity {
     private Test test;
     private byte id;
-    private boolean isCommon;
-    private int taskAmount;
+    private int taskAmount = 1;
     Handler handler;
+    byte taskNum;
     ArrayList<TaskFragment> taskArr;
+    boolean isCommon;
+    TestThread thread = new TestThread();
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -28,69 +31,92 @@ public class TestActivity extends AppCompatActivity {
         id = getIntent().getByteExtra("subject", (byte) 0);
         isCommon = getIntent().getBooleanExtra("isCommon", true);
         if (isCommon) {
-            CommonTestThread thread = new CommonTestThread();
-            thread.start();
-            taskAmount = User.getSubject(id).taskAmount;
-            taskArr = new ArrayList<>(taskAmount);
-            taskArr.add(0, null);
-            test = new Test(id);
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            for (byte i = 1; i <= taskAmount; ++i) {
-                taskArr.add(i, new TaskFragment());
-                ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
-            }
-            FinishButtonFragment buttonFragment = new FinishButtonFragment();
-            ft.add(R.id.place_holder, buttonFragment);
-            ft.commit();
+            commonTestFun();
+        }
+        else {
+            taskNum = getIntent().getByteExtra("taskNum", (byte) 1);
 
-            handler = new Handler(Looper.myLooper()) {
-                @Override
-                public void handleMessage(Message msg) {
-                    RelativeLayout rl = findViewById(R.id.test_layout);
-                    rl.removeView(findViewById(R.id.loading));
-                    test.set(getSupportFragmentManager());
-                    buttonFragment.getButton().setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            for (int i = 1; i <= taskAmount; ++i) {
-                                String userAnswer = taskArr.get(i).getUserAnswer();
-                                String correctAnswer = test.getTasks().get(i-1).getAnswer();
-                                if (userAnswer.equals(correctAnswer)) {
-                                    test.incrementTestScore();
-                                    SubjectsList.getSubject(id).tasksAnswersScore[i]++;
-                                }
-                                else {
-                                    int oldJ = -1, thisJ = 0;
-                                    boolean isRight = false;
-                                    for (int j = 0; j < correctAnswer.length(); ++j) {
-                                        if (correctAnswer.charAt(j) == '|') {
-                                            if (userAnswer.equals(correctAnswer
-                                                    .substring(oldJ+1, j))) {
-                                                test.incrementTestScore();
-                                                SubjectsList.getSubject(id).tasksAnswersScore[i]++;
-                                                isRight = true;
-                                                break;
-                                            }
-                                            oldJ = thisJ;
-                                            thisJ = j;
-                                        }
-                                    }
-                                    if (!isRight) {
-                                        SubjectsList.getSubject(id).tasksAnswersScore[i-1]--;
-                                    }
-                                }
-                            }
-                            test.finish();
-                        }
-                    });
-                }
-            };
+            oneTaskTestFun();
         }
     }
 
-    class CommonTestThread extends Thread {
+    private void oneTaskTestFun() {
+    }
+
+    public void commonTestFun() {
+        thread.start();
+        taskAmount = User.getSubject(id).taskAmount;
+        taskArr = new ArrayList<>(taskAmount);
+        taskArr.add(0, null);
+        test = new Test(id);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        for (byte i = 1; i <= taskAmount; ++i) {
+            taskArr.add(i, new TaskFragment());
+            ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
+        }
+        FinishButtonFragment buttonFragment = new FinishButtonFragment();
+        ft.add(R.id.place_holder, buttonFragment);
+        ft.commit();
+
+        handler = new Handler(Looper.myLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                RelativeLayout rl = findViewById(R.id.test_layout);
+                rl.removeView(findViewById(R.id.loading));
+                test.set(getSupportFragmentManager());
+                buttonFragment.getButton().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        for (int i = 1; i <= taskAmount; ++i) {
+                            String userAnswer = taskArr.get(i).getUserAnswer();
+                            String correctAnswer = test.getTasks().get(i-1).getAnswer();
+                            if (userAnswer.equals(correctAnswer)) {
+                                test.incrementTestScore();
+                                SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                            }
+                            else {
+                                int oldJ = -1, thisJ = 0;
+                                boolean isRight = false;
+                                for (int j = 0; j < correctAnswer.length(); ++j) {
+                                    if (correctAnswer.charAt(j) == '|') {
+                                        if (userAnswer.equals(correctAnswer
+                                                .substring(oldJ+1, j))) {
+                                            test.incrementTestScore();
+                                            SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                                            isRight = true;
+                                            break;
+                                        }
+                                        oldJ = thisJ;
+                                        thisJ = j;
+                                    }
+                                }
+                                if (!isRight) {
+                                    SubjectsList.getSubject(id).tasksAnswersScore[i-1]--;
+                                }
+                            }
+                        }
+                        test.finish(TestActivity.this);
+                    }
+                });
+            }
+        };
+    }
+
+    class TestThread extends Thread {
         @Override
         public void run() {
+            if (isCommon) {
+                common();
+            }
+            else {
+                oneTask();
+            }
+        }
+
+        private void oneTask() {
+        }
+
+        private void common() {
             for (byte i = 1; i <= taskAmount; ++i) {
                 URL url = null;
                 try {

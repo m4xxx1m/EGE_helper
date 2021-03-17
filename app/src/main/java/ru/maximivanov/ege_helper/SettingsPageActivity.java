@@ -16,6 +16,21 @@ public class SettingsPageActivity extends AppCompatActivity {
         if (footerFragment != null) {
             footerFragment.changeImg((byte) 5);
         }
+        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsPageActivity.this, LogInActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.sign_up_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsPageActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void onClickFooter(View v) {

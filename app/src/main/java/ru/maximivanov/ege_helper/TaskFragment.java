@@ -14,6 +14,7 @@ public class TaskFragment extends Fragment {
     private TextView taskName;
     private TextView taskText;
     private EditText editText;
+    String fullTaskText;
     int num;
     public TaskFragment() {
 
@@ -27,16 +28,35 @@ public class TaskFragment extends Fragment {
         this.num = num;
         try {
             this.taskName.setText("№" + taskNum + " - " + taskName);
-            this.taskText.setText(taskText);
+            fullTaskText = taskText;
+            if (taskText.length() > 200) {
+                this.taskText.setText(taskText.substring(0, 200) + "...\n\nПоказать ещё");
+            }
+            else {
+                this.taskText.setText(taskText);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    public void showAllText() {
+        String text = taskText.getText().toString();
+        if (text.endsWith("Показать ещё")) {
+            taskText.setText(fullTaskText);
+        }
+        else {
+            if (fullTaskText.length() > 200) {
+                taskText.setText(fullTaskText.substring(0, 200) + "...\n\nПоказать ещё");
+            }
+            else {
+                taskText.setText(fullTaskText);
+            }
+        }
     }
 
     public static TaskFragment newInstance() {
-        TaskFragment fragment = new TaskFragment();
-        return fragment;
+        return new TaskFragment();
     }
 
     @Override
@@ -52,7 +72,12 @@ public class TaskFragment extends Fragment {
         taskName = v.findViewById(R.id.taskName);
         taskText = v.findViewById(R.id.taskText);
         editText = v.findViewById(R.id.edit_text);
-
+        taskText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAllText();
+            }
+        });
         return v;
     }
 }
