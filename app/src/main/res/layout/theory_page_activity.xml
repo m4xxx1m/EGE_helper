@@ -6,21 +6,18 @@
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="18dp"
             android:paddingHorizontal="25dp"
+            android:id="@+id/theory_place_holder"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/coming_soon"/>
+
         </LinearLayout>
     </ScrollView>
-
     <fragment
         android:layout_width="match_parent"
         android:layout_height="55dp"

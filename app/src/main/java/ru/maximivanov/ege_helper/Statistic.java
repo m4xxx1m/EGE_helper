@@ -6,6 +6,22 @@ import java.util.ArrayList;
 public class Statistic {
     private ArrayList<Test> testResults = new ArrayList<>(); // результаты прошедших тестов
 
+    public int testResultsSize() {
+        return testResults.size();
+    }
+
+    public void addTest(Test test) {
+        testResults.add(test);
+    }
+
+    public Test getTest(int num) {
+        return testResults.get(num);
+    }
+
+    public Test getLastTest() {
+        return getTest(testResults.size()-1);
+    }
+
     public Task getBadTask() {
         // метод возвращает задание, которое пока что плохо дается польлзователю
         int min = Integer.MAX_VALUE;

@@ -22,6 +22,10 @@ public class Test {
         testScore++;
     }
 
+    public int getTaskAmount() {
+        return taskAmount;
+    }
+
     public void set(FragmentManager fm) {
         for (byte i = 1; i <= taskAmount; ++i) {
             TaskFragment fragment = (TaskFragment) fm
@@ -48,6 +52,7 @@ public class Test {
 
     public void finish(TestActivity context) {
         // закончить выполнение теста
+        User.userStatistic.addTest(this);
         Intent finishTestIntent = new Intent(context, TestFinishActivity.class);
         context.startActivity(finishTestIntent);
         context.finish();

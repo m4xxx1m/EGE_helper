@@ -36,4 +36,6 @@
     <string name="finish">Завершить</string>
     <string name="loading">Загрузка...</string>
     <string name="test_results">Результаты теста</string>
+    <string name="last_solved_tests">Последние решённые варианты</string>
+    <string name="show_everything">Показать всё</string>
 </resources>

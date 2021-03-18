@@ -3,5 +3,39 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="18dp"
+            android:paddingHorizontal="25dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:background="@drawable/rounded_rectangle"-->
+<!--            android:id="@+id/place_holder_results"-->
+<!--            android:padding="12dp">-->
+<!--        </LinearLayout>-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle"
+            android:padding="12dp"
+            android:id="@+id/table">
+            <TableRow>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Номер"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Ваш ответ"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Правильный ответ"
+                    android:layout_weight="1"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 </LinearLayout>

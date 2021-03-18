@@ -72,7 +72,8 @@ public class TestActivity extends AppCompatActivity {
                             String correctAnswer = test.getTasks().get(i-1).getAnswer();
                             if (userAnswer.equals(correctAnswer)) {
                                 test.incrementTestScore();
-                                SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                                test.getTasks().get(i - 1).isRight = true;
+                                SubjectsList.getSubject(id).tasksAnswersScore[i-1]++;
                             }
                             else {
                                 int oldJ = -1, thisJ = 0;
@@ -82,7 +83,8 @@ public class TestActivity extends AppCompatActivity {
                                         if (userAnswer.equals(correctAnswer
                                                 .substring(oldJ+1, j))) {
                                             test.incrementTestScore();
-                                            SubjectsList.getSubject(id).tasksAnswersScore[i]++;
+                                            test.getTasks().get(i - 1).isRight = true;
+                                            SubjectsList.getSubject(id).tasksAnswersScore[i-1]++;
                                             isRight = true;
                                             break;
                                         }
@@ -91,6 +93,7 @@ public class TestActivity extends AppCompatActivity {
                                     }
                                 }
                                 if (!isRight) {
+                                    test.getTasks().get(i - 1).isRight = false;
                                     SubjectsList.getSubject(id).tasksAnswersScore[i-1]--;
                                 }
                             }

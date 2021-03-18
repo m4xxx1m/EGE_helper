@@ -10,6 +10,7 @@ public class Task extends Subject {
     private Bitmap taskImage;
     private String answer;
     private boolean hasImage;
+    protected boolean isRight;
 
     public String getAnswer() {
         return answer;

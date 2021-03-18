@@ -19,6 +19,7 @@ public class TestsPageActivity extends AppCompatActivity {
         if (footerFragment != null) {
             footerFragment.changeImg((byte) 2);
         }
+
         LinearLayout tasksLayout = findViewById(R.id.tests_place_holder);
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             TextView subjectName = new TextView(this);
