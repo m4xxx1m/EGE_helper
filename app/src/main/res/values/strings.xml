@@ -38,4 +38,7 @@
     <string name="test_results">Результаты теста</string>
     <string name="last_solved_tests">Последние решённые варианты</string>
     <string name="show_everything">Показать всё</string>
+    <string name="your_answer">Ваш ответ</string>
+    <string name="correct_answer">Правильный ответ</string>
+    <string name="num">№</string>
 </resources>

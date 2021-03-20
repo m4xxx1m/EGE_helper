@@ -1,46 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingHorizontal="25dp">
     <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:paddingVertical="18dp"
+        android:layout_above="@+id/result">
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingVertical="18dp"
-            android:paddingHorizontal="25dp">
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:background="@drawable/rounded_rectangle"-->
-<!--            android:id="@+id/place_holder_results"-->
-<!--            android:padding="12dp">-->
-<!--        </LinearLayout>-->
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_rectangle"
-            android:padding="12dp"
-            android:id="@+id/table">
-            <TableRow>
-                <TextView
-                    android:textSize="18sp"
-                    android:text="№"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:textSize="18sp"
-                    android:text="Ваш ответ"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:textSize="18sp"
-                    android:text="Правильный ответ"
-                    android:layout_weight="1"/>
-            </TableRow>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginVertical="5dp"
-                android:background="@color/myRed"/>
-        </TableLayout>
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_rectangle"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp">
+
+                <LinearLayout
+                    android:id="@+id/taskNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/num"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@color/myRed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/your_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/your_answer"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@color/myRed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/correct_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:text="@string/correct_answer"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@color/myRed" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
     </ScrollView>
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/result"
+        android:textStyle="bold"
+        android:layout_above="@+id/finish"/>
+    <Button
+        android:id="@+id/finish"
+        android:layout_marginTop="7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="50dp"
+        android:background="@drawable/button"
+        android:text="@string/finish"
+        android:textColor="@color/white" />
+</RelativeLayout>

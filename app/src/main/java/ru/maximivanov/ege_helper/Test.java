@@ -16,6 +16,10 @@ public class Test {
         tasks = new ArrayList<>(taskAmount);
     }
 
+    public int getTestScore() {
+        return testScore;
+    }
+
     public void incrementTestScore() {
         testScore++;
     }

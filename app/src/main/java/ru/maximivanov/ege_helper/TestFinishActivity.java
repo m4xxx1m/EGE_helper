@@ -1,7 +1,8 @@
 package ru.maximivanov.ege_helper;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,38 +15,46 @@ public class TestFinishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_finish);
-        TableLayout tableLayout = findViewById(R.id.table);
         test = User.userStatistic.getLastTest();
         tasks = test.getTasks();
+        findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        TextView result = findViewById(R.id.result);
+        result.setText("Ваш результат: " + test.getTestScore() + " из " + test.getTaskAmount());
+        LinearLayout numLayout = findViewById(R.id.taskNum);
+        LinearLayout userAnswerLayout = findViewById(R.id.your_answer);
+        LinearLayout correctAnswerLayout = findViewById(R.id.correct_answer);
         for (int i = 0; i < test.getTaskAmount(); ++i) {
-            TableRow tableRow = new TableRow(this);
-            tableRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT));
-//            tableLayout.addView(tableRow);
-            TextView taskNum = new TextView(this);
-            taskNum.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-
-            tableRow.addView(taskNum);
-            taskNum.setText(String.valueOf(i+1));
-
-            TextView userAnswer = new TextView(this);
-            userAnswer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-            userAnswer.setText(tasks.get(i).userAnswer);
-            tableRow.addView(userAnswer);
-            TextView correctAnswer = new TextView(this);
-            correctAnswer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-            userAnswer.setText(tasks.get(i).getAnswer());
-            tableRow.addView(correctAnswer);
-            if (userAnswer.equals(correctAnswer)) {
-                tableRow.setBackgroundColor(Color.GREEN);
-            }
-            else {
-                tableRow.setBackgroundColor(Color.RED);
-            }
-            tableLayout.addView(tableRow, i + 2);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(dpToPx(5), dpToPx(5), dpToPx(5), dpToPx(5));
+            TextView numText = new TextView(this);
+            TextView userAnswerText = new TextView(this);
+            TextView correctAnswerText = new TextView(this);
+            numText.setLayoutParams(params);
+            userAnswerText.setLayoutParams(params);
+            correctAnswerText.setLayoutParams(params);
+            numText.setSingleLine();
+            userAnswerText.setSingleLine();
+            correctAnswerText.setSingleLine();
+            numText.setTextSize(18);
+            userAnswerText.setTextSize(18);
+            correctAnswerText.setTextSize(18);
+            numText.setText(String.valueOf(i+1));
+            userAnswerText.setText(tasks.get(i).userAnswer);
+            correctAnswerText.setText(tasks.get(i).getAnswer());
+            numLayout.addView(numText);
+            userAnswerLayout.addView(userAnswerText);
+            correctAnswerLayout.addView(correctAnswerText);
         }
+    }
+
+    public int dpToPx(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                getResources().getDisplayMetrics());
     }
 }
