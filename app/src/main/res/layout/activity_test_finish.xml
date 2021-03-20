@@ -25,7 +25,7 @@
             <TableRow>
                 <TextView
                     android:textSize="18sp"
-                    android:text="Номер"
+                    android:text="№"
                     android:layout_weight="1"/>
                 <TextView
                     android:textSize="18sp"
@@ -36,6 +36,11 @@
                     android:text="Правильный ответ"
                     android:layout_weight="1"/>
             </TableRow>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginVertical="5dp"
+                android:background="@color/myRed"/>
         </TableLayout>
     </ScrollView>
 </LinearLayout>

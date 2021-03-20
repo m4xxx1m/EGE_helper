@@ -5,12 +5,13 @@ import android.graphics.Bitmap;
 // класс работает с конкретными заданиями, из которых состоит тест
 public class Task extends Subject {
     public byte taskNum;
-    private String name;
-    private String taskText;
+    private final String name;
+    private final String taskText;
     private Bitmap taskImage;
-    private String answer;
-    private boolean hasImage;
+    private final String answer;
+    private final boolean hasImage;
     protected boolean isRight;
+    protected String userAnswer = "";
 
     public String getAnswer() {
         return answer;
@@ -35,6 +36,6 @@ public class Task extends Subject {
 
     public boolean hasImage() {
         // change!
-        return false;
+        return hasImage;
     }
 }

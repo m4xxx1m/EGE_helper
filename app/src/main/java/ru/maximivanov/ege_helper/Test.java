@@ -1,6 +1,5 @@
 package ru.maximivanov.ege_helper;
 
-import android.content.Context;
 import android.content.Intent;
 import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
@@ -9,8 +8,7 @@ public class Test {
     byte id;
     private ArrayList <Task> tasks;
     private int taskAmount; // количество тестовых заданий в предмете
-    private int testScore; // сколько баллов набрал пользователь
-    private ArrayList<Integer> userAnswers;
+    private int testScore = 0; // сколько баллов набрал пользователь
 
     public Test(byte subId) {
         this.id = subId;

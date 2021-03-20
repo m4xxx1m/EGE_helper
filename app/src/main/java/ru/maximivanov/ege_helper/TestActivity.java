@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -70,6 +70,7 @@ public class TestActivity extends AppCompatActivity {
                         for (int i = 1; i <= taskAmount; ++i) {
                             String userAnswer = taskArr.get(i).getUserAnswer();
                             String correctAnswer = test.getTasks().get(i-1).getAnswer();
+                            test.getTasks().get(i-1).userAnswer = userAnswer;
                             if (userAnswer.equals(correctAnswer)) {
                                 test.incrementTestScore();
                                 test.getTasks().get(i - 1).isRight = true;
@@ -116,32 +117,39 @@ public class TestActivity extends AppCompatActivity {
             }
         }
 
+        private Scanner getStream(String path) {
+            URL url;
+            Scanner in = null;
+            try {
+                url = new URL(path);
+                in = new Scanner((InputStream) url.getContent());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return in;
+        }
+
+        private int randomTask(byte num) {
+            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + num + "/amount.html");
+            int amount = in.nextInt();
+            in.close();
+            return (int)(Math.random() * Integer.MAX_VALUE) % amount;
+        }
+
         private void oneTask() {
         }
 
         private void common() {
             for (byte i = 1; i <= taskAmount; ++i) {
-                URL url = null;
-                try {
-                    url = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" + i + "/"
-                            + 0 + ".html");
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                Scanner in = null;
-                try {
-                    assert url != null;
-                    in = new Scanner((InputStream) url.getContent());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                assert in != null;
+                Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                            i + "/" + randomTask(i) + ".html");
                 boolean hasImage = Boolean.parseBoolean(in.next());
                 String answer = in.next();
                 StringBuilder str = new StringBuilder();
                 while (in.hasNextLine()) {
                     str.append(in.nextLine()).append("\n");
                 }
+                in.close();
                 test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
