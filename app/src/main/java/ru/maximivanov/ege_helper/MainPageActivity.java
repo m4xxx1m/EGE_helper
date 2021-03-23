@@ -27,8 +27,10 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 User.getSubject((byte) 0).makeCommonTest(MainPageActivity.this);
+                updateLastResult();
             }
         });
+
         LinearLayout varLayout = findViewById(R.id.var_layout);
         for (int i = 1; i < User.getSubjectsLen(); ++i) {
             View line = new View(this);
@@ -47,17 +49,33 @@ public class MainPageActivity extends AppCompatActivity {
             subjectName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    User.getSubject((byte) thisSubjectId).makeCommonTest(MainPageActivity.this);
+                    User.getSubject(thisSubjectId).makeCommonTest(MainPageActivity.this);
+                    updateLastResult();
                 }
             });
             subjectName.setTextSize(18);
             subjectName.setText(User.getSubject((byte) i).name);
             varLayout.addView(subjectName);
         }
+
+        updateLastResult();
+
         Task badTask = User.userStatistic.getBadTask();
         if (badTask != null) {
             TextView textViewImprove = findViewById(R.id.first_improve);
             textViewImprove.setText(SubjectsList.getSubject(badTask.id) + " - задание №" + badTask.taskNum);
+        }
+    }
+
+    public void updateLastResult() {
+        if (User.userStatistic.testResultsSize() > 0) {
+            TextView lastResultName = findViewById(R.id.last_result_name);
+            TextView lastResultPercent = findViewById(R.id.last_result_percent);
+            Test test = User.userStatistic.getLastTest();
+            lastResultName.setText(SubjectsList.getSubject(test.id).name);
+            int score = test.getTestScore();
+            int amount = test.getTaskAmount();
+            lastResultPercent.setText(100 * score / amount + "%");
         }
     }
     
