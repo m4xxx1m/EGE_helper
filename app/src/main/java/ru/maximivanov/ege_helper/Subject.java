@@ -36,6 +36,7 @@ public class Subject {
         toTest.putExtra("subject", id);
         toTest.putExtra("isCommon", true);
         context.startActivity(toTest);
+
     }
 
     public void makeOneTaskTest(Context context, byte taskNum) {

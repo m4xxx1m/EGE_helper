@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class TestActivity extends AppCompatActivity {
     private Test test;
     private byte id;
-    private int taskAmount = 1;
+    private int taskAmount = -1;
     Handler handler;
     byte taskNum;
     ArrayList<TaskFragment> taskArr;
@@ -35,12 +35,22 @@ public class TestActivity extends AppCompatActivity {
         }
         else {
             taskNum = getIntent().getByteExtra("taskNum", (byte) 1);
-
             oneTaskTestFun();
         }
     }
 
     private void oneTaskTestFun() {
+        thread.start();
+        while (taskAmount == -1) {
+
+        }
+        taskArr = new ArrayList<>(taskAmount);
+        taskArr.add(0, null);
+        test = new Test(id);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        for (int i = 1; i <= taskAmount; ++i) {
+            // !!!!
+        }
     }
 
     public void commonTestFun() {
@@ -125,31 +135,79 @@ public class TestActivity extends AppCompatActivity {
                 in = new Scanner((InputStream) url.getContent());
             } catch (IOException e) {
                 e.printStackTrace();
+                finish();
+                try {
+                    this.join();
+                } catch (InterruptedException er) {
+                    er.printStackTrace();
+                }
             }
             return in;
         }
 
         private int randomTask(byte num) {
-            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + num + "/amount.html");
-            int amount = in.nextInt();
-            in.close();
+            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + num
+                    + "/amount.html");
+            int amount = 1;
+            try{
+                amount = in.nextInt();
+                in.close();
+            }
+            catch (NullPointerException e) {
+                e.printStackTrace();
+                finish();
+                try {
+                    this.join();
+                } catch (InterruptedException er) {
+                    er.printStackTrace();
+                }
+            }
             return (int)(Math.random() * Integer.MAX_VALUE) % amount;
         }
 
         private void oneTask() {
+            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + taskNum
+                    + "/amount.html");
+            try {
+                taskAmount = Math.max(in.nextInt(), 10);
+                in.close();
+            }
+            catch (NullPointerException e) {
+                e.printStackTrace();
+                finish();
+                try {
+                    this.join();
+                } catch (InterruptedException er) {
+                    er.printStackTrace();
+                }
+            }
+
         }
 
         private void common() {
             for (byte i = 1; i <= taskAmount; ++i) {
                 Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
                             i + "/" + randomTask(i) + ".html");
-                boolean hasImage = Boolean.parseBoolean(in.next());
-                String answer = in.next();
-                StringBuilder str = new StringBuilder();
-                while (in.hasNextLine()) {
-                    str.append(in.nextLine()).append("\n");
+                boolean hasImage = false;
+                String answer = null;
+                StringBuilder str = null;
+                try {
+                    hasImage = Boolean.parseBoolean(in.next());
+                    answer = in.next();
+                    str = new StringBuilder();
+                    while (in.hasNextLine()) {
+                        str.append(in.nextLine()).append("\n");
+                    }
+                    in.close();
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                    finish();
+                    try {
+                        this.join();
+                    } catch (InterruptedException er) {
+                        er.printStackTrace();
+                    }
                 }
-                in.close();
                 test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
