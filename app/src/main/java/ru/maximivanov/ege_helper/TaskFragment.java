@@ -29,7 +29,7 @@ public class TaskFragment extends Fragment {
         try {
             this.taskName.setText("№" + taskNum + " - " + taskName);
             fullTaskText = taskText;
-            if (taskText.length() > 200) {
+            if (taskText.length() > 230) {
                 this.taskText.setText(taskText.substring(0, 200) + "...\n\nПоказать ещё");
             }
             else {

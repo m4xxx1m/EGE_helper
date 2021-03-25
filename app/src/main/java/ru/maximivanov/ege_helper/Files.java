@@ -16,6 +16,10 @@ public class Files {
         refKey = context.getString(R.string.preference_file_key);
     }
 
+    public void delete() {
+
+    }
+
     public static void writeInt(String key, int fileContents) {
         SharedPreferences sharedPref = context.getSharedPreferences(refKey, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -36,9 +40,11 @@ public class Files {
             chosenSubjectSize--;
         }
         chosenSubject.sort(Comparator.naturalOrder());
+        User.initializeSubjectArray();
         User.setUserSubjectsId(chosenSubject);
 
         int testsAmount = sharedPref.getInt(keys[3], 0);
+        User.userStatistic = new Statistic();
         for (int i = 0; i < testsAmount; ++i) {
             Test test = new Test((byte) sharedPref.getInt(keys[4] + i, -1),
                     sharedPref.getInt(keys[5] + i, 0));

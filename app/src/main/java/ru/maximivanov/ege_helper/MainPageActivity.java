@@ -2,6 +2,7 @@ package ru.maximivanov.ege_helper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -39,7 +40,7 @@ public class MainPageActivity extends AppCompatActivity {
             layoutParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
             line.setLayoutParams(layoutParams);
             line.setBackgroundColor(getColor(R.color.myRed));
-            varLayout.addView(line);
+            varLayout.addView(line, i*2-1);
             TextView subjectName = new TextView(this);
             subjectName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
                     LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -55,7 +56,7 @@ public class MainPageActivity extends AppCompatActivity {
             });
             subjectName.setTextSize(18);
             subjectName.setText(User.getSubject((byte) i).name);
-            varLayout.addView(subjectName);
+            varLayout.addView(subjectName, i*2);
         }
 
         updateLastResult();

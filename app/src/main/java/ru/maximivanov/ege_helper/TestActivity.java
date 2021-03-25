@@ -23,6 +23,7 @@ public class TestActivity extends AppCompatActivity {
     ArrayList<TaskFragment> taskArr;
     boolean isCommon;
     TestThread thread = new TestThread();
+    FinishButtonFragment buttonFragment;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -39,41 +40,13 @@ public class TestActivity extends AppCompatActivity {
         }
     }
 
-    private void oneTaskTestFun() {
-        thread.start();
-        while (taskAmount == -1) {
-
-        }
-        taskArr = new ArrayList<>(taskAmount);
-        taskArr.add(0, null);
-        test = new Test(id);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        for (int i = 1; i <= taskAmount; ++i) {
-            // !!!!
-        }
-    }
-
-    public void commonTestFun() {
-        thread.start();
-        taskAmount = User.getSubject(id).taskAmount;
-        taskArr = new ArrayList<>(taskAmount);
-        taskArr.add(0, null);
-        test = new Test(id);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        for (byte i = 1; i <= taskAmount; ++i) {
-            taskArr.add(i, new TaskFragment());
-            ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
-        }
-        FinishButtonFragment buttonFragment = new FinishButtonFragment();
-        ft.add(R.id.place_holder, buttonFragment);
-        ft.commit();
-
+    private void setHandler() {
         handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(Message msg) {
                 RelativeLayout rl = findViewById(R.id.test_layout);
                 rl.removeView(findViewById(R.id.loading));
-                test.set(getSupportFragmentManager());
+                test.commonTaskSet(getSupportFragmentManager());
                 buttonFragment.getButton().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -87,10 +60,10 @@ public class TestActivity extends AppCompatActivity {
                                 SubjectsList.getSubject(id).tasksAnswersScore[i-1]++;
                             }
                             else {
-                                int oldJ = -1, thisJ = 0;
+                                int oldJ = -1;
                                 boolean isRight = false;
-                                for (int j = 0; j < correctAnswer.length(); ++j) {
-                                    if (correctAnswer.charAt(j) == '|') {
+                                for (int j = 0; j <= correctAnswer.length(); ++j) {
+                                    if (j == correctAnswer.length() || correctAnswer.charAt(j) == '|') {
                                         if (userAnswer.equals(correctAnswer
                                                 .substring(oldJ+1, j))) {
                                             test.incrementTestScore();
@@ -99,8 +72,7 @@ public class TestActivity extends AppCompatActivity {
                                             isRight = true;
                                             break;
                                         }
-                                        oldJ = thisJ;
-                                        thisJ = j;
+                                        oldJ = j;
                                     }
                                 }
                                 if (!isRight) {
@@ -114,6 +86,42 @@ public class TestActivity extends AppCompatActivity {
                 });
             }
         };
+    }
+
+    private void oneTaskTestFun() {
+        thread.start();
+        while (taskAmount == -1) {
+
+        }
+        taskArr = new ArrayList<>(taskAmount);
+        taskArr.add(0, null);
+        test = new Test(id);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        for (int i = 1; i <= taskAmount; ++i) {
+            taskArr.add(i, new TaskFragment());
+            ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
+        }
+        FinishButtonFragment buttonFragment = new FinishButtonFragment();
+        ft.add(R.id.place_holder, buttonFragment);
+        ft.commit();
+        setHandler();
+    }
+
+    public void commonTestFun() {
+        thread.start();
+        taskAmount = User.getSubject(id).taskAmount;
+        taskArr = new ArrayList<>(taskAmount);
+        taskArr.add(0, null);
+        test = new Test(id);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        for (byte i = 1; i <= taskAmount; ++i) {
+            taskArr.add(i, new TaskFragment());
+            ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
+        }
+        buttonFragment = new FinishButtonFragment();
+        ft.add(R.id.place_holder, buttonFragment);
+        ft.commit();
+        setHandler();
     }
 
     class TestThread extends Thread {
@@ -166,11 +174,12 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private void oneTask() {
-            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + taskNum
+            Scanner sc = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + taskNum
                     + "/amount.html");
             try {
-                taskAmount = Math.max(in.nextInt(), 10);
-                in.close();
+                taskAmount = Math.min(sc.nextInt(), 10);
+                test.setTaskAmount(taskAmount);
+                sc.close();
             }
             catch (NullPointerException e) {
                 e.printStackTrace();
@@ -181,7 +190,34 @@ public class TestActivity extends AppCompatActivity {
                     er.printStackTrace();
                 }
             }
-
+            for (byte i = 1; i <= taskAmount; ++i) {
+                // change
+                Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                        i + "/" + randomTask(taskNum) + ".html");
+                // change
+                boolean hasImage = false;
+                String answer = null;
+                StringBuilder str = null;
+                try {
+                    hasImage = Boolean.parseBoolean(in.next());
+                    answer = in.next();
+                    str = new StringBuilder();
+                    while (in.hasNextLine()) {
+                        str.append(in.nextLine()).append("\n");
+                    }
+                    in.close();
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                    finish();
+                    try {
+                        this.join();
+                    } catch (InterruptedException er) {
+                        er.printStackTrace();
+                    }
+                }
+                test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
+            }
+            handler.sendEmptyMessage(1);
         }
 
         private void common() {
