@@ -89,19 +89,20 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void oneTaskTestFun() {
+        test = new Test(id);
         thread.start();
         while (taskAmount == -1) {
 
         }
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
-        test = new Test(id);
+
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         for (int i = 1; i <= taskAmount; ++i) {
             taskArr.add(i, new TaskFragment());
             ft.add(R.id.place_holder, taskArr.get(i), String.valueOf(i));
         }
-        FinishButtonFragment buttonFragment = new FinishButtonFragment();
+        buttonFragment = new FinishButtonFragment();
         ft.add(R.id.place_holder, buttonFragment);
         ft.commit();
         setHandler();
