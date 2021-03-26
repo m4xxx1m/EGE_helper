@@ -11,33 +11,45 @@ import androidx.fragment.app.FragmentTransaction;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestActivity extends AppCompatActivity {
     private Test test;
     private byte id;
     private int taskAmount = -1;
-    Handler handler;
-    byte taskNum;
-    ArrayList<TaskFragment> taskArr;
-    boolean isCommon;
-    TestThread thread = new TestThread();
-    FinishButtonFragment buttonFragment;
+    private Handler handler;
+    private byte taskNum;
+    private ArrayList<TaskFragment> taskArr;
+    private boolean isCommon;
+    private TestThread thread;
+    private FinishButtonFragment buttonFragment;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_test);
+        thread = new TestThread();
         id = getIntent().getByteExtra("subject", (byte) 0);
         isCommon = getIntent().getBooleanExtra("isCommon", true);
         if (isCommon) {
             commonTestFun();
         }
         else {
-            taskNum = getIntent().getByteExtra("taskNum", (byte) 1);
+            taskNum = getIntent().getByteExtra("taskNum", (byte) 0);
             oneTaskTestFun();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        try {
+//            thread.join();
+//            thread = null;
+//            finish();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void setHandler() {
@@ -46,7 +58,13 @@ public class TestActivity extends AppCompatActivity {
             public void handleMessage(Message msg) {
                 RelativeLayout rl = findViewById(R.id.test_layout);
                 rl.removeView(findViewById(R.id.loading));
-                test.commonTaskSet(getSupportFragmentManager());
+                if (isCommon) {
+                    test.commonTaskSet(getSupportFragmentManager());
+                }
+                else {
+                    test.setTaskNum(taskNum);
+                    test.oneTaskSet(getSupportFragmentManager());
+                }
                 buttonFragment.getButton().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -89,11 +107,13 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void oneTaskTestFun() {
+        setHandler();
         test = new Test(id);
         thread.start();
         while (taskAmount == -1) {
 
         }
+        test.setTaskAmount(taskAmount);
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
 
@@ -105,10 +125,11 @@ public class TestActivity extends AppCompatActivity {
         buttonFragment = new FinishButtonFragment();
         ft.add(R.id.place_holder, buttonFragment);
         ft.commit();
-        setHandler();
+
     }
 
     public void commonTestFun() {
+        setHandler();
         thread.start();
         taskAmount = User.getSubject(id).taskAmount;
         taskArr = new ArrayList<>(taskAmount);
@@ -122,7 +143,7 @@ public class TestActivity extends AppCompatActivity {
         buttonFragment = new FinishButtonFragment();
         ft.add(R.id.place_holder, buttonFragment);
         ft.commit();
-        setHandler();
+
     }
 
     class TestThread extends Thread {
@@ -174,11 +195,28 @@ public class TestActivity extends AppCompatActivity {
             return (int)(Math.random() * Integer.MAX_VALUE) % amount;
         }
 
+        private int[] getRandomArray(int amount) {
+            int[] tasksArray = new int[taskAmount];
+            Integer[] objArr = new Integer[amount];
+            for (int i = 0; i < amount; ++i) {
+                objArr[i] = i;
+            }
+            List<Integer> list = Arrays.asList(Arrays.stream(objArr).toArray(Integer[]::new));
+            Collections.shuffle(list);
+            objArr = (Integer[]) list.toArray();
+            for (int i = 0; i < taskAmount; ++i) {
+                tasksArray[i] = objArr[i];
+            }
+            return tasksArray;
+        }
+
         private void oneTask() {
             Scanner sc = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + taskNum
                     + "/amount.html");
+            int amount = 0;
             try {
-                taskAmount = Math.min(sc.nextInt(), 10);
+                amount = sc.nextInt();
+                taskAmount = Math.min(amount, 10);
                 test.setTaskAmount(taskAmount);
                 sc.close();
             }
@@ -191,11 +229,10 @@ public class TestActivity extends AppCompatActivity {
                     er.printStackTrace();
                 }
             }
+            int[] tasksArray = getRandomArray(amount);
             for (byte i = 1; i <= taskAmount; ++i) {
-                // change
                 Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
-                        i + "/" + randomTask(taskNum) + ".html");
-                // change
+                        taskNum + "/" + tasksArray[i-1] + ".html");
                 boolean hasImage = false;
                 String answer = null;
                 StringBuilder str = null;
@@ -216,7 +253,7 @@ public class TestActivity extends AppCompatActivity {
                         er.printStackTrace();
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
+                test.addTask(new Task(id, i, hasImage, /*"",*/ String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }
@@ -245,7 +282,7 @@ public class TestActivity extends AppCompatActivity {
                         er.printStackTrace();
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, "", String.valueOf(str), answer));
+                test.addTask(new Task(id, i, hasImage, /*"",*/ String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 // класс работает с конкретными заданиями, из которых состоит тест
 public class Task extends Subject {
     public byte taskNum;
-    private final String name;
+    //private final String name;
     private final String taskText;
     private Bitmap taskImage;
     private final String answer;
@@ -17,11 +17,11 @@ public class Task extends Subject {
         return answer;
     }
 
-    public Task(byte id, byte taskNum, boolean hasImage, String name, String taskText, String answer) {
+    public Task(byte id, byte taskNum, boolean hasImage, /*String name,*/ String taskText, String answer) {
         super(id);
         this.taskNum = taskNum;
         this.hasImage = hasImage;
-        this.name = name;
+        //this.name = name;
         this.taskText = taskText;
         this.answer = answer;
     }

@@ -46,7 +46,7 @@ public class TaskFragment extends Fragment {
             taskText.setText(fullTaskText);
         }
         else {
-            if (fullTaskText.length() > 200) {
+            if (fullTaskText.length() > 230) {
                 taskText.setText(fullTaskText.substring(0, 200) + "...\n\nПоказать ещё");
             }
             else {
