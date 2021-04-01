@@ -40,18 +40,6 @@ public class TestActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        try {
-//            thread.join();
-//            thread = null;
-//            finish();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-    }
-
     private void setHandler() {
         handler = new Handler(Looper.myLooper()) {
             @Override

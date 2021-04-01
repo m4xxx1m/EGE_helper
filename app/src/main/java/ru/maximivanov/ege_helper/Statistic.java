@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 // Данный класс хранит статистику пользователя
 public class Statistic {
-    private ArrayList<Test> testResults = new ArrayList<>(); // результаты прошедших тестов
+    private final ArrayList<Test> testResults = new ArrayList<>(); // результаты прошедших тестов
 
     public int testResultsSize() {
         return testResults.size();
@@ -15,7 +15,7 @@ public class Statistic {
     }
 
     public Test getTest(int num) {
-        if (testResults.size() > num + 1)
+        if (testResults.size() < num + 1)
             return null;
         return testResults.get(num);
     }

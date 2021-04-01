@@ -23,7 +23,7 @@ public class Subject {
     protected final String name;
     public final byte taskAmount;
     protected Theory theory;
-    protected int[] tasksAnswersScore;
+    protected int[] tasksAnswersScore; // TODO: добавить сохранение в базу данных
     protected String[] tasksNames;
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);

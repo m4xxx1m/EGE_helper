@@ -2,22 +2,24 @@ package ru.maximivanov.ege_helper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
 // главная активность приложения
 
 public class MainPageActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        
+        LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.
+                LayoutParams.MATCH_PARENT, dpToPx(3));
+        lineParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
+        
         FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.footer);
         if (footerFragment != null) {
@@ -29,17 +31,13 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 User.getSubject((byte) 0).makeCommonTest(MainPageActivity.this);
-                updateLastResult();
             }
         });
 
         LinearLayout varLayout = findViewById(R.id.var_layout);
         for (int i = 1; i < User.getSubjectsLen(); ++i) {
             View line = new View(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.
-                    LayoutParams.MATCH_PARENT, dpToPx(3));
-            layoutParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
-            line.setLayoutParams(layoutParams);
+            line.setLayoutParams(lineParams);
             line.setBackgroundColor(getColor(R.color.myRed));
             varLayout.addView(line, i*2-1);
             TextView subjectName = new TextView(this);
@@ -52,7 +50,6 @@ public class MainPageActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     User.getSubject(thisSubjectId).makeCommonTest(MainPageActivity.this);
-                    updateLastResult();
                 }
             });
             subjectName.setTextSize(18);
@@ -61,31 +58,18 @@ public class MainPageActivity extends AppCompatActivity {
         }
 
         updateLastResult();
+        updateImproveTasks();
 
-//        ArrayList<Task> badTasks = User.userStatistic.getBadTask();
-//        if (!badTasks.isEmpty() && badTasks != null) {
-//            ListView listView = findViewById(R.id.list_view_bad_tasks);
-//            ArrayAdapter<Task> arrayAdapter = new ArrayAdapter<Task>(this, R.layout.adapter_item, badTasks);
-//            listView.setAdapter(arrayAdapter);
-////            listView.setOnClickListener(new View.OnClickListener() {
-////                @Override
-////                public void onClick(View v) {
-////                    int id = v.getId();
-////                    Log.d("id", String.valueOf(id));
-////
-////                }
-////            });
-//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Log.d("position", String.valueOf(position));
-//                    Log.d("id", String.valueOf(id));
-//                }
-//            });
-//        }
     }
 
-    public void updateLastResult() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateLastResult();
+        updateImproveTasks();
+    }
+
+    protected void updateLastResult() {
         if (User.userStatistic.testResultsSize() > 0) {
             TextView lastResultName = findViewById(R.id.last_result_name);
             TextView lastResultPercent = findViewById(R.id.last_result_percent);
@@ -94,6 +78,43 @@ public class MainPageActivity extends AppCompatActivity {
             int score = test.getTestScore();
             int amount = test.getTaskAmount();
             lastResultPercent.setText(100 * score / amount + "%");
+        }
+    }
+
+    public void updateImproveTasks() {
+        ArrayList<Task> badTasks = User.userStatistic.getBadTask();
+        if (badTasks != null) {
+            LinearLayout improveLayout = findViewById(R.id.improve_layout);
+            improveLayout.removeAllViewsInLayout();
+            LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.
+                    LayoutParams.MATCH_PARENT, dpToPx(3));
+            lineParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
+            for (int i = 0; i < badTasks.size(); ++i) {
+                TextView improveText;
+                if (i != 0) {
+                    View line = new View(this);
+                    line.setLayoutParams(lineParams);
+                    line.setBackgroundColor(getColor(R.color.myRed));
+                    improveLayout.addView(line);
+                }
+                improveText = new TextView(this);
+                improveText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
+                        LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                improveText.setClickable(true);
+                improveText.setFocusable(true);
+                improveText.setTextSize(18);
+                final byte finalI = (byte) i;
+                improveText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        byte sub = badTasks.get(finalI).id;
+                        byte taskNum = badTasks.get(finalI).taskNum;
+                        User.getSubject(sub).makeOneTaskTest(MainPageActivity.this, taskNum);
+                    }
+                });
+                improveText.setText(badTasks.get(i).toString());
+                improveLayout.addView(improveText);
+            }
         }
     }
     

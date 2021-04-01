@@ -21,9 +21,9 @@ public class Test {
         tasks = new ArrayList<>(taskAmount);
     }
 
-    public Test(byte subId, int score) {
+    public Test(byte subId, int score, int taskAmount) {
         id = subId;
-        taskAmount = SubjectsList.getSubject(subId).taskAmount;
+        this.taskAmount = taskAmount;
         testScore = score;
     }
 
@@ -86,10 +86,11 @@ public class Test {
     public void finish(TestActivity context) {
         // закончить выполнение теста
         int length = User.userStatistic.testResultsSize();
-        Files.writeInt(Files.keys[3], length + 1);
+        //Files.writeInt(Files.keys[3], length + 1);
         User.userStatistic.addTest(this);
-        Files.writeInt(Files.keys[4] + length, id);
-        Files.writeInt(Files.keys[5] + length, testScore);
+        Files.insertStatistic(id, taskAmount, testScore);
+        //Files.writeInt(Files.keys[4] + length, id);
+        //Files.writeInt(Files.keys[5] + length, testScore);
         Intent finishTestIntent = new Intent(context, TestFinishActivity.class);
         context.startActivity(finishTestIntent);
         context.finish();

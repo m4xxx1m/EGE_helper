@@ -21,6 +21,7 @@ public class TestFinishActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+
             }
         });
         TextView result = findViewById(R.id.result);
