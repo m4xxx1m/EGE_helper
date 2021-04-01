@@ -15,26 +15,40 @@ public class Statistic {
     }
 
     public Test getTest(int num) {
+        if (testResults.size() > num + 1)
+            return null;
         return testResults.get(num);
     }
 
     public Test getLastTest() {
+        if (testResults.isEmpty())
+            return null;
         return getTest(testResults.size()-1);
     }
 
-    public Task getBadTask() {
-        // метод возвращает задание, которое пока что плохо дается польлзователю
+    public ArrayList<Task> getBadTask() {
+        // метод возвращает задания, которые пока что плохо даются польлзователю
+        if (this.getLastTest() == null) {
+            return null;
+        }
         int min = Integer.MAX_VALUE;
-        Task badTask = null;
-//        for (byte i = 0; i < User.getSubjectsLen(); ++i) {
-//            Subject thisSub = User.getSubject(i);
-//            for (byte wrongIndex = 0; wrongIndex < thisSub.tasksWrongAnswers.length; ++i) {
-//                if (thisSub.tasksWrongAnswers[wrongIndex] < min) {
-//                    min = thisSub.tasksWrongAnswers[wrongIndex];
-//                    badTask = new Task(thisSub.id, wrongIndex);
-//                }
-//            }
-//        }
-        return badTask;
+        ArrayList<Task> badTasks = new ArrayList<>();
+        for (byte i = 0; i < User.getSubjectsLen(); ++i) {
+            Subject sub = User.getSubject(i);
+            for (int score : sub.tasksAnswersScore) {
+                if (score < min) {
+                    min = score;
+                }
+            }
+        }
+        for (byte i = 0; i < User.getSubjectsLen(); ++i) {
+            Subject sub = User.getSubject(i);
+            for (byte j = 0; j < sub.tasksAnswersScore.length; ++j) {
+                if (sub.tasksAnswersScore[j] == min) {
+                    badTasks.add(new Task(sub.id, (byte) (j + 1)));
+                }
+            }
+        }
+        return badTasks;
     }
 }

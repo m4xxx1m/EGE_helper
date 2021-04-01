@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import org.w3c.dom.Text;
 
 // Экран "Статистика"
 public class StatisticPageActivity extends AppCompatActivity {

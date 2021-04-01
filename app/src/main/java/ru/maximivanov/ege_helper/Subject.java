@@ -24,8 +24,7 @@ public class Subject {
     public final byte taskAmount;
     protected Theory theory;
     protected int[] tasksAnswersScore;
-    protected String []tasksNames;
-    public static final int COMMON_TEST = 0;
+    protected String[] tasksNames;
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
         tasksAnswersScore = new int[taskAmount];

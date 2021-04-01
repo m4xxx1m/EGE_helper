@@ -4,102 +4,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/footer">
+        android:layout_above="@+id/list_view_place"
+        android:layout_marginBottom="-64dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="18dp"
+            android:orientation="vertical"
             android:paddingHorizontal="25dp"
-            android:orientation="vertical">
+            android:paddingVertical="18dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="@string/ege_var"
-                android:textSize="24sp"
-                android:layout_marginBottom="15dp">
-            </TextView>
+                android:textSize="24sp" />
+
             <LinearLayout
+                android:id="@+id/var_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:id="@+id/var_layout"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/rounded_rectangle"
-                android:layout_marginBottom="15dp">
+                android:orientation="vertical"
+                android:padding="8dp">
+
                 <TextView
+                    android:id="@+id/first_subject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/first_subject"
                     android:clickable="true"
-                    android:textSize="18sp"
-                    android:focusable="true">
-                </TextView>
+                    android:focusable="true"
+                    android:textSize="18sp" />
 
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="3dp"-->
-<!--                    android:layout_marginVertical="5dp"-->
-<!--                    android:background="@color/myRed"/>-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="3dp"-->
+                <!--                    android:layout_marginVertical="5dp"-->
+                <!--                    android:background="@color/myRed"/>-->
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="@string/last_result"
-                android:textSize="24sp"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="24sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/rounded_rectangle"
-                android:padding="8dp"
-                android:layout_marginBottom="15dp">
+                android:padding="8dp">
+
                 <TextView
-                    android:text="@string/solved_no_variants"
-                    android:textSize="18sp"
                     android:id="@+id/last_result_name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"/>
+                    android:text="@string/solved_no_variants"
+                    android:textSize="18sp" />
+
                 <TextView
-                    android:textSize="18sp"
                     android:id="@+id/last_result_percent"
-                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"/>
+                    android:layout_alignParentEnd="true"
+                    android:textSize="18sp" />
             </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="@string/improve_result"
-                android:textSize="24sp"
-                android:layout_marginBottom="15dp"/>
+                android:textSize="24sp" />
+
             <LinearLayout
+                android:id="@+id/improve_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/rounded_rectangle"
-                android:id="@+id/improve_layout"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:layout_marginBottom="15dp">
+                android:padding="8dp">
+
                 <TextView
+                    android:id="@+id/first_improve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/first_improve"
                     android:clickable="true"
                     android:focusable="true"
                     android:text="@string/solved_no_variants"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
 
         </LinearLayout>
     </ScrollView>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingHorizontal="15dp"-->
+<!--        android:id="@+id/list_view_place"-->
+<!--        android:layout_above="@id/footer">-->
+<!--        <ListView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/rounded_rectangle"-->
+<!--            android:dividerHeight="3dp"-->
+<!--            android:id="@+id/list_view_bad_tasks"-->
+<!--            android:divider="@color/myRed"/>-->
+<!--    </LinearLayout>-->
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="55dp"

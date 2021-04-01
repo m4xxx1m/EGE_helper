@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 // главная активность приложения
 
@@ -61,11 +62,27 @@ public class MainPageActivity extends AppCompatActivity {
 
         updateLastResult();
 
-        Task badTask = User.userStatistic.getBadTask();
-        if (badTask != null) {
-            TextView textViewImprove = findViewById(R.id.first_improve);
-            textViewImprove.setText(SubjectsList.getSubject(badTask.id) + " - задание №" + badTask.taskNum);
-        }
+//        ArrayList<Task> badTasks = User.userStatistic.getBadTask();
+//        if (!badTasks.isEmpty() && badTasks != null) {
+//            ListView listView = findViewById(R.id.list_view_bad_tasks);
+//            ArrayAdapter<Task> arrayAdapter = new ArrayAdapter<Task>(this, R.layout.adapter_item, badTasks);
+//            listView.setAdapter(arrayAdapter);
+////            listView.setOnClickListener(new View.OnClickListener() {
+////                @Override
+////                public void onClick(View v) {
+////                    int id = v.getId();
+////                    Log.d("id", String.valueOf(id));
+////
+////                }
+////            });
+//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    Log.d("position", String.valueOf(position));
+//                    Log.d("id", String.valueOf(id));
+//                }
+//            });
+//        }
     }
 
     public void updateLastResult() {
