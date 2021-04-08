@@ -41,7 +41,7 @@ public class Subject {
 
     public void setTasksAnswersScore(Integer[] scoreArr) {
         if (tasksAnswersScore.length == scoreArr.length) {
-
+//            tasksAnswersScore = scoreArr;
         }
     }
 
