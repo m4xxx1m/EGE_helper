@@ -65,13 +65,14 @@ public class ChoseSubjectsActivity extends AppCompatActivity {
                     User.isInitialized = true;
                     Intent toApp = new Intent(ChoseSubjectsActivity.this, MainPageActivity.class);
                     Files.writeInt(Files.keys[0], 1); // запись в хранилище телефона, что пользователь заходил в приложение
-                    int chosenSubjectsSize = chosenSubjects.size();
-                    Files.writeInt(Files.keys[1], chosenSubjectsSize); // запись количества выбранных предметов в хранилище телефона
-                    while (chosenSubjectsSize > 0) {
-                        Files.writeInt(Files.keys[2] + chosenSubjectsSize, chosenSubjects
-                                .get(chosenSubjectsSize - 1)); // запись выбранных предметов в хранилище телефона
-                        chosenSubjectsSize--;
-                    }
+                    Files.insertSubjects(chosenSubjects);
+//                    int chosenSubjectsSize = chosenSubjects.size();
+//                    Files.writeInt(Files.keys[1], chosenSubjectsSize); // запись количества выбранных предметов в хранилище телефона
+//                    while (chosenSubjectsSize > 0) {
+//                        Files.writeInt(Files.keys[2] + chosenSubjectsSize, chosenSubjects
+//                                .get(chosenSubjectsSize - 1)); // запись выбранных предметов в хранилище телефона
+//                        chosenSubjectsSize--;
+//                    }
                     startActivity(toApp);
                     finish();
                 }

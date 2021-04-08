@@ -35,16 +35,18 @@ public class Statistic {
         ArrayList<Task> badTasks = new ArrayList<>();
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             Subject sub = User.getSubject(i);
-            for (int score : sub.tasksAnswersScore) {
-                if (score < min) {
-                    min = score;
+            for (Integer score : sub.tasksAnswersScore) {
+                if (score != null) {
+                    if (score < min) {
+                        min = score;
+                    }
                 }
             }
         }
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             Subject sub = User.getSubject(i);
             for (byte j = 0; j < sub.tasksAnswersScore.length; ++j) {
-                if (sub.tasksAnswersScore[j] == min) {
+                if (sub.tasksAnswersScore[i] != null && sub.tasksAnswersScore[j] == min) {
                     badTasks.add(new Task(sub.id, (byte) (j + 1)));
                 }
             }

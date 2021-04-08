@@ -22,8 +22,8 @@ import java.util.ArrayList;
 // данный класс включает в себя все предметы, заранее инициализированные
 public class SubjectsList {
     public static final byte subjectsAmount = 11;
-    private static ArrayList <Subject> subjects = new ArrayList<>(subjectsAmount);
-    private static ArrayList <Integer> theoryFragmentsId = new ArrayList<>();
+    private static final ArrayList <Subject> subjects = new ArrayList<>(subjectsAmount);
+    //private static ArrayList <Integer> theoryFragmentsId = new ArrayList<>();
 
     public static void setSubjects(Context context) {
         subjects.add(0, new Subject((byte) 0, context.getString(R.string.russian),
@@ -49,7 +49,7 @@ public class SubjectsList {
         subjects.add(10, new Subject((byte) 10, context.getString(R.string.english),
                 (byte) 29));
         for (int i = 0; i < 11; ++i) {
-            theoryFragmentsId.add(i, i);
+            //theoryFragmentsId.add(i, i);
             subjects.get(i).setTheory();
         }
     }
@@ -58,7 +58,7 @@ public class SubjectsList {
         return subjects.get(id);
     }
 
-    public static int getTheoryFragmentsId(byte subId) {
-        return theoryFragmentsId.get(subId);
-    }
+//    public static int getTheoryFragmentsId(byte subId) {
+//        return theoryFragmentsId.get(subId);
+//    }
 }

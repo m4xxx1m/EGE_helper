@@ -23,11 +23,12 @@ public class Subject {
     protected final String name;
     public final byte taskAmount;
     protected Theory theory;
-    protected int[] tasksAnswersScore; // TODO: добавить сохранение в базу данных
+    protected Integer[] tasksAnswersScore; // TODO: добавить сохранение в базу данных
     protected String[] tasksNames;
+
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
-        tasksAnswersScore = new int[taskAmount];
+        tasksAnswersScore = new Integer[taskAmount];
     }
 
     public void makeCommonTest(Context context) {
@@ -36,6 +37,12 @@ public class Subject {
         toTest.putExtra("isCommon", true);
         context.startActivity(toTest);
 
+    }
+
+    public void setTasksAnswersScore(Integer[] scoreArr) {
+        if (tasksAnswersScore.length == scoreArr.length) {
+
+        }
     }
 
     public void makeOneTaskTest(Context context, byte taskNum) {
@@ -50,7 +57,7 @@ public class Subject {
         this.id = id;
         this.name = name;
         this.taskAmount = taskAmount;
-        tasksAnswersScore = new int[taskAmount];
+        tasksAnswersScore = new Integer[taskAmount];
         setTasksNames();
     }
 
@@ -111,5 +118,19 @@ public class Subject {
 //                tasksNames = new String[]{};
                 break;
         }
+    }
+
+    public void ansScoreInc(int i) {
+        if (tasksAnswersScore[i] != null)
+            tasksAnswersScore[i] = tasksAnswersScore[i] + 1;
+        else
+            tasksAnswersScore[i] = 1;
+    }
+
+    public void ansScoreDec(int i) {
+        if (tasksAnswersScore[i] != null)
+            tasksAnswersScore[i] = tasksAnswersScore[i] - 1;
+        else
+            tasksAnswersScore[i] = -1;
     }
 }

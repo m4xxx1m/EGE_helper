@@ -91,6 +91,7 @@ public class Test {
         Files.insertStatistic(id, taskAmount, testScore);
         //Files.writeInt(Files.keys[4] + length, id);
         //Files.writeInt(Files.keys[5] + length, testScore);
+        Files.updateAnswerScore(id, SubjectsList.getSubject(id).tasksAnswersScore);
         Intent finishTestIntent = new Intent(context, TestFinishActivity.class);
         context.startActivity(finishTestIntent);
         context.finish();

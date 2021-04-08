@@ -83,7 +83,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void updateImproveTasks() {
         ArrayList<Task> badTasks = User.userStatistic.getBadTask();
-        if (badTasks != null) {
+        if (badTasks != null && badTasks.size() > 0) {
             LinearLayout improveLayout = findViewById(R.id.improve_layout);
             improveLayout.removeAllViewsInLayout();
             LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.

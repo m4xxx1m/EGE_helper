@@ -5,7 +5,7 @@ public class Theory extends Subject {
 
     public Theory(byte id) {
         super(id);
-        fragmentLayoutId = SubjectsList.getTheoryFragmentsId(id);
+        //fragmentLayoutId = SubjectsList.getTheoryFragmentsId(id);
     }
 
     public void showTheory() {
