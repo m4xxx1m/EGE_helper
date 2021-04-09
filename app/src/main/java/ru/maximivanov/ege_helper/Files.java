@@ -63,7 +63,7 @@ public class Files {
         for (Byte sub : chosenSubjects) {
             ContentValues cv = new ContentValues();
             cv.put(SUB_COL_SUB, (int)sub);
-            cv.put(SUB_COL_ANSWERS_SCORE, "!");
+            cv.put(SUB_COL_ANSWERS_SCORE, "");
             mDataBase.insert(SUBJECT_TABLE_NAME, null, cv);
         }
     }
@@ -73,11 +73,17 @@ public class Files {
         for (int i = 0; i < scoreArr.length; ++i) {
             if (i != 0)
                 str.append(" ");
-            str.append(scoreArr[i].toString());
+            if (scoreArr[i] == null) {
+                str.append("null");
+            }
+            else {
+                str.append(scoreArr[i].toString());
+            }
         }
         ContentValues cv = new ContentValues();
         cv.put(SUB_COL_SUB, (int) subID);
         cv.put(SUB_COL_ANSWERS_SCORE, str.toString());
+        // TODO: change
         mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",new String[] { String.valueOf(subIds.get(subID)) });
     }
 
@@ -100,7 +106,7 @@ public class Files {
     }
 
     private static void transformToIntAnswersScore(String str, byte subID) {
-        if (str != null && !str.equals("!")) {
+        if (str != null && !str.equals("")) {
             String[] strArr = str.split(" ");
             Integer[] scoreArr = new Integer[strArr.length];
             for (int i = 0; i < strArr.length; ++i) {

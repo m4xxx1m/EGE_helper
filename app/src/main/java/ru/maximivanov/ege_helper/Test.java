@@ -85,7 +85,7 @@ public class Test {
 
     public void finish(TestActivity context) {
         // закончить выполнение теста
-        int length = User.userStatistic.testResultsSize();
+        //int length = User.userStatistic.testResultsSize();
         //Files.writeInt(Files.keys[3], length + 1);
         User.userStatistic.addTest(this);
         Files.insertStatistic(id, taskAmount, testScore);

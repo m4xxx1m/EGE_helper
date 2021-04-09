@@ -23,7 +23,7 @@ public class Subject {
     protected final String name;
     public final byte taskAmount;
     protected Theory theory;
-    protected Integer[] tasksAnswersScore; // TODO: добавить сохранение в базу данных
+    protected Integer[] tasksAnswersScore;
     protected String[] tasksNames;
 
     public Subject(byte id) {
@@ -41,7 +41,7 @@ public class Subject {
 
     public void setTasksAnswersScore(Integer[] scoreArr) {
         if (tasksAnswersScore.length == scoreArr.length) {
-//            tasksAnswersScore = scoreArr;
+            tasksAnswersScore = scoreArr;
         }
     }
 

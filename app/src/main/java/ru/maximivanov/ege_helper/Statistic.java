@@ -32,6 +32,7 @@ public class Statistic {
             return null;
         }
         int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         ArrayList<Task> badTasks = new ArrayList<>();
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             Subject sub = User.getSubject(i);
@@ -40,13 +41,16 @@ public class Statistic {
                     if (score < min) {
                         min = score;
                     }
+                    if (score > max) {
+                        max = score;
+                    }
                 }
             }
         }
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             Subject sub = User.getSubject(i);
             for (byte j = 0; j < sub.tasksAnswersScore.length; ++j) {
-                if (sub.tasksAnswersScore[i] != null && sub.tasksAnswersScore[j] == min) {
+                if (sub.tasksAnswersScore[j] != null && sub.tasksAnswersScore[j] == min) {
                     badTasks.add(new Task(sub.id, (byte) (j + 1)));
                 }
             }
