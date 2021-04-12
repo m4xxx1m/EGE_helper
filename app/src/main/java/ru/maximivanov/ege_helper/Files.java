@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -60,11 +62,14 @@ public class Files {
     }
 
     public static void insertSubjects(ArrayList<Byte> chosenSubjects) {
+        byte i = 1;
         for (Byte sub : chosenSubjects) {
             ContentValues cv = new ContentValues();
             cv.put(SUB_COL_SUB, (int)sub);
-            cv.put(SUB_COL_ANSWERS_SCORE, "");
+            cv.put(SUB_COL_ANSWERS_SCORE, "!");
             mDataBase.insert(SUBJECT_TABLE_NAME, null, cv);
+            subIds.put(sub, i);
+            i++;
         }
     }
 
@@ -84,7 +89,9 @@ public class Files {
         cv.put(SUB_COL_SUB, (int) subID);
         cv.put(SUB_COL_ANSWERS_SCORE, str.toString());
         // TODO: change
-        mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",new String[] { String.valueOf(subIds.get(subID)) });
+        Log.d("debug_database", String.valueOf(
+                mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",
+                        new String[] { String.valueOf(subIds.get(subID)) })));
     }
 
     public static void selectSubjects() {
@@ -92,7 +99,7 @@ public class Files {
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             ArrayList<Byte> chosenSubject = new ArrayList<>();
-            byte i = 0;
+            byte i = 1;
             do {
                 byte subId = (byte) mCursor.getInt(NUM_SUB_COL_SUB);
                 String tasksAnswersScore = mCursor.getString(NUM_SUB_COL_ANSWERS_SCORE);
@@ -106,7 +113,7 @@ public class Files {
     }
 
     private static void transformToIntAnswersScore(String str, byte subID) {
-        if (str != null && !str.equals("")) {
+        if (str != null && !str.equals("!")) {
             String[] strArr = str.split(" ");
             Integer[] scoreArr = new Integer[strArr.length];
             for (int i = 0; i < strArr.length; ++i) {

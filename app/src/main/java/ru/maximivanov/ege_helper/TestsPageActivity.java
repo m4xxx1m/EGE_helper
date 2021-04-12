@@ -59,6 +59,7 @@ public class TestsPageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         User.getSubject(finalI).makeOneTaskTest(TestsPageActivity.this, finalJ);
+                        finish();
                     }
                 });
                 roundedRectangle.addView(taskButton);
