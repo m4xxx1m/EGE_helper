@@ -88,7 +88,6 @@ public class Files {
         ContentValues cv = new ContentValues();
         cv.put(SUB_COL_SUB, (int) subID);
         cv.put(SUB_COL_ANSWERS_SCORE, str.toString());
-        // TODO: change
         Log.d("debug_database", String.valueOf(
                 mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",
                         new String[] { String.valueOf(subIds.get(subID)) })));

@@ -22,13 +22,17 @@ public class Subject {
     protected final byte id;
     protected final String name;
     public final byte taskAmount;
-    protected Theory theory;
+    private Theory theory;
     protected Integer[] tasksAnswersScore;
     protected String[] tasksNames;
 
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
-        tasksAnswersScore = new Integer[taskAmount];
+//        tasksAnswersScore = new Integer[taskAmount];
+    }
+
+    public Theory getTheory() {
+        return theory;
     }
 
     public void makeCommonTest(Context context) {
@@ -58,6 +62,7 @@ public class Subject {
         this.name = name;
         this.taskAmount = taskAmount;
         tasksAnswersScore = new Integer[taskAmount];
+        theory = new Theory(this.id);
         setTasksNames();
     }
 

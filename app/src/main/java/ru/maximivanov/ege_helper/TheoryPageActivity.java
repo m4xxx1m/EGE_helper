@@ -21,6 +21,9 @@ public class TheoryPageActivity extends AppCompatActivity {
         }
 
         LinearLayout tasksLayout = findViewById(R.id.theory_place_holder);
+        LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.
+                LayoutParams.MATCH_PARENT, dpToPx(3));
+        lineParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             TextView subjectName = new TextView(this);
             subjectName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
@@ -35,30 +38,31 @@ public class TheoryPageActivity extends AppCompatActivity {
             roundedRectangle.setLayoutParams(linLayParams);
             roundedRectangle.setOrientation(LinearLayout.VERTICAL);
             roundedRectangle.setBackground(getDrawable(R.drawable.rounded_rectangle));
-            roundedRectangle.setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12));
+            roundedRectangle.setPadding(dpToPx(10), dpToPx(7), dpToPx(10), dpToPx(7));
             tasksLayout.addView(roundedRectangle);
-            for (byte j = 1; j <= User.getSubject(i).taskAmount; j++) {
+            Theory theory = User.getSubject(i).getTheory();
+            for (byte j = 0; j < theory.getSize(); j++) {
+                if (j != 0) {
+                    View line = new View(this);
+                    line.setLayoutParams(lineParams);
+                    line.setBackgroundColor(getColor(R.color.myRed));
+                    roundedRectangle.addView(line);
+                }
                 TextView theoryButton = new TextView(this);
                 LinearLayout.LayoutParams theoryButParams = new LinearLayout.LayoutParams(LinearLayout
                         .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                theoryButParams.setMargins(0, dpToPx(4), 0, dpToPx(4));
+                //theoryButParams.setMargins(0, dpToPx(4), 0, dpToPx(4));
                 theoryButton.setLayoutParams(theoryButParams);
-                try {
-                    theoryButton.setText(j + ") " + User.getSubject(i).tasksNames[j-1]);
-                }
-                catch (NullPointerException e) {
-                    e.printStackTrace();
-                    theoryButton.setText(j + ") " + User.getSubject(i).name);
-                }
+                theoryButton.setText(theory.getName(j));
                 theoryButton.setClickable(true);
                 theoryButton.setFocusable(true);
                 theoryButton.setTextSize(18);
-                final byte finalI = i;
+//                final byte finalI = i;
                 final byte finalJ = j;
                 theoryButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // change!
+                        theory.browseToTheory(TheoryPageActivity.this, finalJ);
                     }
                 });
                 roundedRectangle.addView(theoryButton);
