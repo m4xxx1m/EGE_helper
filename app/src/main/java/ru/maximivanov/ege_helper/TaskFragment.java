@@ -1,7 +1,9 @@
 package ru.maximivanov.ege_helper;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ public class TaskFragment extends Fragment {
     private TextView taskName;
     private TextView taskText;
     private EditText editText;
+    private ImageView imageView;
     String fullTaskText;
     int num;
     public TaskFragment() {
@@ -24,7 +27,7 @@ public class TaskFragment extends Fragment {
         return editText.getText().toString();
     }
 
-    public void set(int num, int taskNum, String taskName, String taskText) {
+    public void set(int num, int taskNum, String taskName, String taskText, Bitmap image) {
         this.num = num;
         try {
             this.taskName.setText("№" + taskNum + " - " + taskName);
@@ -34,6 +37,9 @@ public class TaskFragment extends Fragment {
             }
             else {
                 this.taskText.setText(taskText);
+            }
+            if (image != null) {
+                imageView.setImageBitmap(image);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,6 +78,7 @@ public class TaskFragment extends Fragment {
         taskName = v.findViewById(R.id.taskName);
         taskText = v.findViewById(R.id.taskText);
         editText = v.findViewById(R.id.edit_text);
+        imageView = v.findViewById(R.id.task_image);
         taskText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

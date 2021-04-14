@@ -36,9 +36,21 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/taskText"
         android:textSize="16sp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/task_image"
+            android:contentDescription="@string/task_image" />
+    </HorizontalScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"

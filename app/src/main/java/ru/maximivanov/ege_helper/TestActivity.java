@@ -1,5 +1,7 @@
 package ru.maximivanov.ege_helper;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
@@ -250,7 +253,23 @@ public class TestActivity extends AppCompatActivity {
                         er.printStackTrace();
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, /*"",*/ String.valueOf(str), answer));
+                Bitmap bitmap = null;
+                if (hasImage) {
+                    try {
+                        URL imageUrl = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                                taskNum + "/" + tasksArray[i-1] + ".png");
+                        bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        finish();
+                        try {
+                            this.join();
+                        } catch (InterruptedException er) {
+                            er.printStackTrace();
+                        }
+                    }
+                }
+                test.addTask(new Task(id, i, hasImage, bitmap, String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }
@@ -263,7 +282,8 @@ public class TestActivity extends AppCompatActivity {
                 String answer = null;
                 StringBuilder str = null;
                 try {
-                    hasImage = Boolean.parseBoolean(in.next());
+                    String hasImgStr = in.next();
+                    hasImage = (!hasImgStr.equals("0"));
                     answer = in.next();
                     str = new StringBuilder();
                     while (in.hasNextLine()) {
@@ -279,7 +299,23 @@ public class TestActivity extends AppCompatActivity {
                         er.printStackTrace();
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, /*"",*/ String.valueOf(str), answer));
+                Bitmap bitmap = null;
+                if (hasImage) {
+                    try {
+                        URL imageUrl = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                                i + "/" + randomTask(i) + ".png");
+                        bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        finish();
+                        try {
+                            this.join();
+                        } catch (InterruptedException er) {
+                            er.printStackTrace();
+                        }
+                    }
+                }
+                test.addTask(new Task(id, i, hasImage, bitmap, String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }

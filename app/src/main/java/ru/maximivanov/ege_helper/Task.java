@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 public class Task extends Subject {
     public byte taskNum;
     private String taskText = null;
-    private Bitmap taskImage;
+    private Bitmap taskImage = null;
     private String answer = null;
     private boolean hasImage = false;
     protected boolean isRight;
@@ -16,13 +16,18 @@ public class Task extends Subject {
         return answer;
     }
 
-    public Task(byte id, byte taskNum, boolean hasImage, /*String name,*/ String taskText, String answer) {
+    public Task(byte id, byte taskNum, boolean hasImage, Bitmap image, String taskText, String answer) {
         super(id);
         this.taskNum = taskNum;
         this.hasImage = hasImage;
+        this.taskImage = image;
         //this.name = name;
         this.taskText = taskText;
         this.answer = answer;
+    }
+
+    public Bitmap getTaskImage() {
+        return taskImage;
     }
 
     public Task(byte id, byte taskNum) {

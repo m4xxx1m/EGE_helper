@@ -46,11 +46,11 @@ public class Test {
             assert fragment != null;
             if (User.getSubject(id).tasksNames[i-1] != null) {
                 fragment.set(i, i, User.getSubject(id).tasksNames[i-1],
-                        String.valueOf(tasks.get(i-1).getTaskText()));
+                        String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
             else {
                 fragment.set(i, i, User.getSubject(id).name,
-                        String.valueOf(tasks.get(i-1).getTaskText()));
+                        String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
         }
     }
@@ -66,11 +66,11 @@ public class Test {
             assert fragment != null;
             if (User.getSubject(id).tasksNames[taskNum-1] != null) {
                 fragment.set(i, taskNum, User.getSubject(id).tasksNames[taskNum-1],
-                        String.valueOf(tasks.get(i-1).getTaskText()));
+                        String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
             else {
                 fragment.set(i, i, User.getSubject(id).name,
-                        String.valueOf(tasks.get(i-1).getTaskText()));
+                        String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
         }
     }
