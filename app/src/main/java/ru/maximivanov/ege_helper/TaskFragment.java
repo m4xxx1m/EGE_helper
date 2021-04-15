@@ -34,7 +34,7 @@ public class TaskFragment extends Fragment {
             this.taskName.setText("№" + taskNum + " - " + taskName);
             fullTaskText = taskText;
             if (taskText.length() > 230) {
-                this.taskText.setText(taskText.substring(0, 200) + "...\n\nПоказать ещё");
+                this.taskText.setText(taskText.substring(0, 200) + getString(R.string.show_more));
             }
             else {
                 this.taskText.setText(taskText);
@@ -53,12 +53,12 @@ public class TaskFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void showAllText() {
         String text = taskText.getText().toString();
-        if (text.endsWith("Показать ещё")) {
+        if (text.endsWith(getString(R.string.show_more))) {
             taskText.setText(fullTaskText);
         }
         else {
             if (fullTaskText.length() > 230) {
-                taskText.setText(fullTaskText.substring(0, 200) + "...\n\nПоказать ещё");
+                taskText.setText(fullTaskText.substring(0, 200) + getString(R.string.show_more));
             }
             else {
                 taskText.setText(fullTaskText);

@@ -47,7 +47,7 @@ public class Statistic {
                 }
             }
         }
-        if (min == max) {
+        if (min == max && min > 0) {
             return null;
         }
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {

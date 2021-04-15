@@ -175,7 +175,7 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private int randomTask(byte num) {
-            Scanner in = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + num
+            Scanner in = getStream(getString(R.string.path) + id + "/" + num
                     + "/amount.html");
             int amount = 1;
             try{
@@ -210,7 +210,7 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private void oneTask() {
-            Scanner sc = getStream("https:m4xxx1m.github.io/tasks/" + id + "/" + taskNum
+            Scanner sc = getStream(getString(R.string.path) + id + "/" + taskNum
                     + "/amount.html");
             int amount = 0;
             try {
@@ -230,7 +230,7 @@ public class TestActivity extends AppCompatActivity {
             }
             int[] tasksArray = getRandomArray(amount);
             for (byte i = 1; i <= taskAmount; ++i) {
-                Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                Scanner in = getStream(getString(R.string.path) + id + "/" +
                         taskNum + "/" + tasksArray[i-1] + ".html");
                 boolean hasImage = false;
                 String answer = null;
@@ -255,7 +255,7 @@ public class TestActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
                 if (hasImage) {
                     try {
-                        URL imageUrl = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                        URL imageUrl = new URL(getString(R.string.path) + id + "/" +
                                 taskNum + "/" + tasksArray[i-1] + ".png");
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
@@ -275,7 +275,7 @@ public class TestActivity extends AppCompatActivity {
 
         private void common() {
             for (byte i = 1; i <= taskAmount; ++i) {
-                Scanner in = getStream("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                Scanner in = getStream(getString(R.string.path) + id + "/" +
                             i + "/" + randomTask(i) + ".html");
                 boolean hasImage = false;
                 String answer = null;
@@ -301,7 +301,7 @@ public class TestActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
                 if (hasImage) {
                     try {
-                        URL imageUrl = new URL("https://m4xxx1m.github.io/tasks/" + id + "/" +
+                        URL imageUrl = new URL(getString(R.string.path) + id + "/" +
                                 i + "/" + randomTask(i) + ".png");
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
