@@ -106,21 +106,6 @@
         </LinearLayout>
     </ScrollView>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingHorizontal="15dp"-->
-<!--        android:id="@+id/list_view_place"-->
-<!--        android:layout_above="@id/footer">-->
-<!--        <ListView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/rounded_rectangle"-->
-<!--            android:dividerHeight="3dp"-->
-<!--            android:id="@+id/list_view_bad_tasks"-->
-<!--            android:divider="@color/myRed"/>-->
-<!--    </LinearLayout>-->
-
     <fragment
         android:layout_width="match_parent"
         android:layout_height="55dp"

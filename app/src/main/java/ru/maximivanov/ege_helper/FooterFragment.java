@@ -28,27 +28,27 @@ public class FooterFragment extends Fragment {
         TextView textView;
         switch (num) {
             case 1:
-                textView = (TextView) Objects.requireNonNull(getView())
+                textView = Objects.requireNonNull(getView())
                         .findViewById(R.id.home_button);
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.home_icon_2, 0, 0);
                 break;
             case 2:
-                textView = (TextView) Objects.requireNonNull(getView())
+                textView = Objects.requireNonNull(getView())
                         .findViewById(R.id.test_button);
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.test_icon_2, 0, 0);
                 break;
             case 3:
-                textView = (TextView) Objects.requireNonNull(getView())
+                textView = Objects.requireNonNull(getView())
                         .findViewById(R.id.theory_button);
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.theory_icon_2, 0, 0);
                 break;
             case 4:
-                textView = (TextView) Objects.requireNonNull(getView())
+                textView = Objects.requireNonNull(getView())
                         .findViewById(R.id.statistic_button);
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.statistic_icon_2, 0, 0);
                 break;
             case 5:
-                textView = (TextView) Objects.requireNonNull(getView())
+                textView = Objects.requireNonNull(getView())
                         .findViewById(R.id.settings_button);
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.settings_icon_2, 0, 0);
                 break;

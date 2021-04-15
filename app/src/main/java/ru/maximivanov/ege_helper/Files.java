@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 // класс для работы с файлами
-// работа с файлами реализована в виде словаря, с использованием SharedReferences
 public class Files {
     private static String refKey;
     private static Context context;
@@ -157,16 +156,6 @@ public class Files {
         if (!User.isInitialized) {
             return;
         }
-
-//        int chosenSubjectSize = sharedPref.getInt(keys[1], 0);
-//        ArrayList<Byte> chosenSubject = new ArrayList<>();
-//        while (chosenSubjectSize > 0) {
-//            chosenSubject.add((byte) sharedPref.getInt(keys[2] + chosenSubjectSize, -1));
-//            chosenSubjectSize--;
-//        }
-//        chosenSubject.sort(Comparator.naturalOrder());
-//
-//        User.setUserSubjectsId(chosenSubject);
         selectSubjects();
         selectStatistic();
     }

@@ -13,12 +13,6 @@ public class FinishButtonFragment extends Fragment {
     public FinishButtonFragment() {
     }
 
-    public static FinishButtonFragment newInstance(String param1, String param2) {
-        FinishButtonFragment fragment = new FinishButtonFragment();
-        Bundle args = new Bundle();
-        return fragment;
-    }
-
     public Button getButton() {
         return button;
     }

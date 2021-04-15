@@ -8,7 +8,6 @@ public class Task extends Subject {
     private String taskText = null;
     private Bitmap taskImage = null;
     private String answer = null;
-    private boolean hasImage = false;
     protected boolean isRight;
     protected String userAnswer = "";
 
@@ -16,12 +15,10 @@ public class Task extends Subject {
         return answer;
     }
 
-    public Task(byte id, byte taskNum, boolean hasImage, Bitmap image, String taskText, String answer) {
+    public Task(byte id, byte taskNum, Bitmap image, String taskText, String answer) {
         super(id);
         this.taskNum = taskNum;
-        this.hasImage = hasImage;
         this.taskImage = image;
-        //this.name = name;
         this.taskText = taskText;
         this.answer = answer;
     }
@@ -41,11 +38,6 @@ public class Task extends Subject {
 
     public String getName() {
         return name;
-    }
-
-    public boolean hasImage() {
-        // change!
-        return hasImage;
     }
 
     @Override

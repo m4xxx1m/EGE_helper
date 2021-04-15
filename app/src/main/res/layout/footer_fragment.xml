@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -28,31 +27,6 @@
             android:layout_marginTop="4dp"
             app:drawableTopCompat="@drawable/home_icon" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:clickable="true"-->
-<!--        android:onClick="onClickFooter"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/home_button"-->
-<!--        android:orientation="vertical"-->
-<!--        android:gravity="center">-->
-<!--        <ImageView-->
-<!--            android:id="@+id/home_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:srcCompat="@drawable/home_icon"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/home"-->
-<!--            android:textColor="@color/myBlue"-->
-<!--            android:textAlignment="center"/>-->
-<!--    </LinearLayout>-->
-
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -66,29 +40,6 @@
             android:textColor="@color/myBlue"
             android:layout_marginTop="4dp"
             app:drawableTopCompat="@drawable/test_icon" />
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/test_button"-->
-<!--        android:orientation="vertical"-->
-<!--        android:gravity="center">-->
-<!--        <ImageView-->
-<!--            android:id="@+id/test_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:srcCompat="@drawable/test_icon"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/test"-->
-<!--            android:textColor="@color/myBlue"-->
-<!--            android:textAlignment="center"/>-->
-<!--    </LinearLayout>-->
 
         <TextView
             android:layout_width="0dp"
@@ -103,29 +54,6 @@
             android:textColor="@color/myBlue"
             android:layout_marginTop="4dp"
             app:drawableTopCompat="@drawable/theory_icon" />
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/theory_button"-->
-<!--        android:orientation="vertical"-->
-<!--        android:gravity="center">-->
-<!--        <ImageView-->
-<!--            android:id="@+id/theory_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            app:srcCompat="@drawable/theory_icon"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/theory"-->
-<!--            android:textColor="@color/myBlue"-->
-<!--            android:textAlignment="center"/>-->
-<!--    </LinearLayout>-->
 
         <TextView
             android:layout_width="0dp"
@@ -141,30 +69,6 @@
             android:layout_marginTop="4dp"
             android:singleLine="true"
             app:drawableTopCompat="@drawable/statistic_icon" />
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/statistic_button"-->
-<!--        android:orientation="vertical"-->
-<!--        android:gravity="center">-->
-<!--        <ImageView-->
-<!--            android:id="@+id/statistic_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            app:srcCompat="@drawable/statistic_icon"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/statistic"-->
-<!--            android:textColor="@color/myBlue"-->
-<!--            android:singleLine="true"-->
-<!--            android:textAlignment="center"/>-->
-<!--    </LinearLayout>-->
 
         <TextView
             android:layout_width="0dp"
@@ -180,31 +84,6 @@
             android:layout_marginTop="4dp"
             android:singleLine="true"
             app:drawableTopCompat="@drawable/settings_icon" />
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:id="@+id/settings_button"-->
-<!--        android:orientation="vertical"-->
-<!--        android:gravity="center">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/settings_image"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            app:srcCompat="@drawable/settings_icon"-->
-<!--            tools:ignore="VectorDrawableCompat" />-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/settings"-->
-<!--            android:textColor="@color/myBlue"-->
-<!--            android:singleLine="true"-->
-<!--            android:textAlignment="center"/>-->
-<!--    </LinearLayout>-->
     </LinearLayout>
 
 </LinearLayout>

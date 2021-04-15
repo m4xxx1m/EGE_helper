@@ -51,13 +51,11 @@ public class TheoryPageActivity extends AppCompatActivity {
                 TextView theoryButton = new TextView(this);
                 LinearLayout.LayoutParams theoryButParams = new LinearLayout.LayoutParams(LinearLayout
                         .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                //theoryButParams.setMargins(0, dpToPx(4), 0, dpToPx(4));
                 theoryButton.setLayoutParams(theoryButParams);
                 theoryButton.setText(theory.getName(j));
                 theoryButton.setClickable(true);
                 theoryButton.setFocusable(true);
                 theoryButton.setTextSize(18);
-//                final byte finalI = i;
                 final byte finalJ = j;
                 theoryButton.setOnClickListener(new View.OnClickListener() {
                     @Override

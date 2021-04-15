@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class TaskFragment extends Fragment {
-//    private String answer;
-//    private TextView taskNum;
     private TextView taskName;
     private TextView taskText;
     private EditText editText;
@@ -66,10 +64,6 @@ public class TaskFragment extends Fragment {
                 taskText.setText(fullTaskText);
             }
         }
-    }
-
-    public static TaskFragment newInstance() {
-        return new TaskFragment();
     }
 
     @Override

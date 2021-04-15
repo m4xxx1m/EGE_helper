@@ -28,7 +28,6 @@ public class Subject {
 
     public Subject(byte id) {
         this(id, SubjectsList.getSubject(id).name, SubjectsList.getSubject(id).taskAmount);
-//        tasksAnswersScore = new Integer[taskAmount];
     }
 
     public Theory getTheory() {

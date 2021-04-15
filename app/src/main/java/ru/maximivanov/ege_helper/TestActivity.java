@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
@@ -269,7 +268,7 @@ public class TestActivity extends AppCompatActivity {
                         }
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, bitmap, String.valueOf(str), answer));
+                test.addTask(new Task(id, i, bitmap, String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }
@@ -315,7 +314,7 @@ public class TestActivity extends AppCompatActivity {
                         }
                     }
                 }
-                test.addTask(new Task(id, i, hasImage, bitmap, String.valueOf(str), answer));
+                test.addTask(new Task(id, i, bitmap, String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
         }

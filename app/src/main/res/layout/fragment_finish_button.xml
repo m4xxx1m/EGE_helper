@@ -17,4 +17,3 @@
         android:layout_alignParentBottom="true"
         android:textColor="@color/white" />
 </RelativeLayout>
-<!--    android:paddingHorizontal="15dp"-->

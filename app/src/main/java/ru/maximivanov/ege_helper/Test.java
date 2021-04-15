@@ -85,12 +85,8 @@ public class Test {
 
     public void finish(TestActivity context) {
         // закончить выполнение теста
-        //int length = User.userStatistic.testResultsSize();
-        //Files.writeInt(Files.keys[3], length + 1);
         User.userStatistic.addTest(this);
         Files.insertStatistic(id, taskAmount, testScore);
-        //Files.writeInt(Files.keys[4] + length, id);
-        //Files.writeInt(Files.keys[5] + length, testScore);
         Files.updateAnswerScore(id, SubjectsList.getSubject(id).tasksAnswersScore);
         Intent finishTestIntent = new Intent(context, TestFinishActivity.class);
         context.startActivity(finishTestIntent);
