@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
-                    android:text="@string/solved_no_variants"
+                    android:text="@string/solve_tasks"
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>

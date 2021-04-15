@@ -47,6 +47,9 @@ public class Statistic {
                 }
             }
         }
+        if (min == max) {
+            return null;
+        }
         for (byte i = 0; i < User.getSubjectsLen(); ++i) {
             Subject sub = User.getSubject(i);
             for (byte j = 0; j < sub.tasksAnswersScore.length; ++j) {

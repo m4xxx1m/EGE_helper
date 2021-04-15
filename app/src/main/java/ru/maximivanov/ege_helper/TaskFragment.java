@@ -1,5 +1,6 @@
 package ru.maximivanov.ege_helper;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -17,8 +18,9 @@ public class TaskFragment extends Fragment {
     private TextView taskText;
     private EditText editText;
     private ImageView imageView;
-    String fullTaskText;
+    private String fullTaskText;
     int num;
+
     public TaskFragment() {
 
     }
@@ -27,6 +29,7 @@ public class TaskFragment extends Fragment {
         return editText.getText().toString();
     }
 
+    @SuppressLint("SetTextI18n")
     public void set(int num, int taskNum, String taskName, String taskText, Bitmap image) {
         this.num = num;
         try {
@@ -49,6 +52,7 @@ public class TaskFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void showAllText() {
         String text = taskText.getText().toString();
         if (text.endsWith("Показать ещё")) {

@@ -42,4 +42,5 @@
     <string name="correct_answer">Правильный ответ</string>
     <string name="num">№</string>
     <string name="task_image">task image</string>
+    <string name="solve_tasks">Решайте задания для получения персональных рекомендаций</string>
 </resources>

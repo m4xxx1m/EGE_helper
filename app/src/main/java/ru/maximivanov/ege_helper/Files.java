@@ -119,7 +119,9 @@ public class Files {
                 if (strArr[i].equals("null")) {
                     scoreArr[i] = null;
                 }
-                scoreArr[i] = Integer.parseInt(strArr[i]);
+                else {
+                    scoreArr[i] = Integer.parseInt(strArr[i]);
+                }
             }
             SubjectsList.getSubject(subID).setTasksAnswersScore(scoreArr);
         }
