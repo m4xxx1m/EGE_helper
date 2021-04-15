@@ -39,6 +39,9 @@ public class TaskFragment extends Fragment {
                 this.taskText.setText(taskText);
             }
             if (image != null) {
+                int inWidth = image.getWidth();
+                int inHeight = image.getHeight();
+                image = Bitmap.createScaledBitmap(image, 3*inWidth, 3*inHeight, false);
                 imageView.setImageBitmap(image);
             }
         } catch (Exception e) {
