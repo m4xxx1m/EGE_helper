@@ -236,7 +236,8 @@ public class TestActivity extends AppCompatActivity {
                 String answer = null;
                 StringBuilder str = null;
                 try {
-                    hasImage = Boolean.parseBoolean(in.next());
+                    String hasImgStr = in.next();
+                    hasImage = (!hasImgStr.equals("0"));
                     answer = in.next();
                     str = new StringBuilder();
                     while (in.hasNextLine()) {

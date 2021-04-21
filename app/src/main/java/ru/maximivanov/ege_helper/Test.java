@@ -69,7 +69,7 @@ public class Test {
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
             else {
-                fragment.set(i, i, User.getSubject(id).name,
+                fragment.set(i, taskNum, User.getSubject(id).name,
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
         }
