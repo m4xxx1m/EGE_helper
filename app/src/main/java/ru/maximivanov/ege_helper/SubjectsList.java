@@ -30,7 +30,7 @@ public class SubjectsList {
         subjects.add(1, new Subject((byte) 1, context.getString(R.string.math_profile),
                 (byte) 12));
         subjects.add(2, new Subject((byte) 2, context.getString(R.string.informatics),
-                (byte) 27));
+                (byte) 14));
         subjects.add(3, new Subject((byte) 3, context.getString(R.string.physics),
                 (byte) 26));
         subjects.add(4, new Subject((byte) 4, context.getString(R.string.chemistry),

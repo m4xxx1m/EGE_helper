@@ -290,7 +290,7 @@ public class TestActivity extends AppCompatActivity {
                         str.append(in.nextLine()).append("\n");
                     }
                     in.close();
-                } catch (NullPointerException e) {
+                } catch (NullPointerException | NoSuchElementException e) {
                     e.printStackTrace();
                     finish();
                     try {
