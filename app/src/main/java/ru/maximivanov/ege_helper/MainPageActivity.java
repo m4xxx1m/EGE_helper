@@ -15,11 +15,10 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        
         LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.
                 LayoutParams.MATCH_PARENT, dpToPx(3));
         lineParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
-        
+
         FooterFragment footerFragment = (FooterFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.footer);
         if (footerFragment != null) {
@@ -33,7 +32,6 @@ public class MainPageActivity extends AppCompatActivity {
                 User.getSubject((byte) 0).makeCommonTest(MainPageActivity.this);
             }
         });
-
         LinearLayout varLayout = findViewById(R.id.var_layout);
         for (int i = 1; i < User.getSubjectsLen(); ++i) {
             View line = new View(this);
@@ -56,10 +54,8 @@ public class MainPageActivity extends AppCompatActivity {
             subjectName.setText(User.getSubject((byte) i).name);
             varLayout.addView(subjectName, i*2);
         }
-
         updateLastResult();
         updateImproveTasks();
-
     }
 
     @Override

@@ -53,6 +53,7 @@ public class TestsPageActivity extends AppCompatActivity {
                 taskButton.setClickable(true);
                 taskButton.setFocusable(true);
                 taskButton.setTextSize(18);
+                // onClick требует константы
                 final byte finalI = i;
                 final byte finalJ = j;
                 taskButton.setOnClickListener(new View.OnClickListener() {

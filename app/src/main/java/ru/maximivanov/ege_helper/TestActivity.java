@@ -31,13 +31,13 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_test);
         thread = new TestThread();
-        id = getIntent().getByteExtra("subject", (byte) 0);
-        isCommon = getIntent().getBooleanExtra("isCommon", true);
+        id = getIntent().getByteExtra(Subject.SUBJECT, (byte) 0);
+        isCommon = getIntent().getBooleanExtra(Subject.IS_COMMON, true);
         if (isCommon) {
             commonTestFun();
         }
         else {
-            taskNum = getIntent().getByteExtra("taskNum", (byte) 0);
+            taskNum = getIntent().getByteExtra(Subject.TASK_NUM, (byte) 0);
             oneTaskTestFun();
         }
     }
@@ -109,9 +109,14 @@ public class TestActivity extends AppCompatActivity {
         setHandler();
         test = new Test(id);
         thread.start();
-        while (taskAmount == -1) {
-
+        try {
+            while (taskAmount == -1) {
+                // ждём пока taskAmount не изменится
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         test.setTaskAmount(taskAmount);
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
@@ -146,6 +151,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     class TestThread extends Thread {
+        private final String zero = "0";
         @Override
         public void run() {
             if (isCommon) {
@@ -175,8 +181,8 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private int randomTask(byte num) {
-            Scanner in = getStream(getString(R.string.path) + id + "/" + num
-                    + "/amount.html");
+            Scanner in = getStream(getString(R.string.path) + id + getString(R.string.slash)
+                    + num + getString(R.string.amount_html));
             int amount = 1;
             try{
                 amount = in.nextInt();
@@ -210,8 +216,8 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private void oneTask() {
-            Scanner sc = getStream(getString(R.string.path) + id + "/" + taskNum
-                    + "/amount.html");
+            Scanner sc = getStream(getString(R.string.path) + id + getString(R.string.slash) + taskNum
+                    + getString(R.string.amount_html));
             int amount = 0;
             try {
                 amount = sc.nextInt();
@@ -230,14 +236,14 @@ public class TestActivity extends AppCompatActivity {
             }
             int[] tasksArray = getRandomArray(amount);
             for (byte i = 1; i <= taskAmount; ++i) {
-                Scanner in = getStream(getString(R.string.path) + id + "/" +
-                        taskNum + "/" + tasksArray[i-1] + ".html");
+                Scanner in = getStream(getString(R.string.path) + id + getString(R.string.slash) +
+                        taskNum + getString(R.string.slash) + tasksArray[i-1] + getString(R.string.html));
                 boolean hasImage = false;
                 String answer = null;
                 StringBuilder str = null;
                 try {
                     String hasImgStr = in.next();
-                    hasImage = (!hasImgStr.equals("0"));
+                    hasImage = (!hasImgStr.equals(zero));
                     answer = in.next();
                     str = new StringBuilder();
                     while (in.hasNextLine()) {
@@ -256,8 +262,8 @@ public class TestActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
                 if (hasImage) {
                     try {
-                        URL imageUrl = new URL(getString(R.string.path) + id + "/" +
-                                taskNum + "/" + tasksArray[i-1] + ".png");
+                        URL imageUrl = new URL(getString(R.string.path) + id + getString(R.string.slash) +
+                                taskNum + getString(R.string.slash) + tasksArray[i-1] + getString(R.string.png));
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -276,14 +282,14 @@ public class TestActivity extends AppCompatActivity {
 
         private void common() {
             for (byte i = 1; i <= taskAmount; ++i) {
-                Scanner in = getStream(getString(R.string.path) + id + "/" +
-                            i + "/" + randomTask(i) + ".html");
+                Scanner in = getStream(getString(R.string.path) + id + getString(R.string.slash) +
+                            i + getString(R.string.slash) + randomTask(i) + getString(R.string.html));
                 boolean hasImage = false;
                 String answer = null;
                 StringBuilder str = null;
                 try {
                     String hasImgStr = in.next();
-                    hasImage = (!hasImgStr.equals("0"));
+                    hasImage = (!hasImgStr.equals(zero));
                     answer = in.next();
                     str = new StringBuilder();
                     while (in.hasNextLine()) {
@@ -302,8 +308,8 @@ public class TestActivity extends AppCompatActivity {
                 Bitmap bitmap = null;
                 if (hasImage) {
                     try {
-                        URL imageUrl = new URL(getString(R.string.path) + id + "/" +
-                                i + "/" + randomTask(i) + ".png");
+                        URL imageUrl = new URL(getString(R.string.path) + id + getString(R.string.slash) +
+                                i + getString(R.string.slash) + randomTask(i) + getString(R.string.png));
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
                         e.printStackTrace();

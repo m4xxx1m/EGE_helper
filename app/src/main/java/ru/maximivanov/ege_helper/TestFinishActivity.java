@@ -25,7 +25,8 @@ public class TestFinishActivity extends AppCompatActivity {
             }
         });
         TextView result = findViewById(R.id.result);
-        result.setText("Ваш результат: " + test.getTestScore() + " из " + test.getTaskAmount());
+        result.setText(getString(R.string.your_result) + test.getTestScore()
+                + getString(R.string.out_of) + test.getTaskAmount());
         LinearLayout numLayout = findViewById(R.id.taskNum);
         LinearLayout userAnswerLayout = findViewById(R.id.your_answer);
         LinearLayout correctAnswerLayout = findViewById(R.id.correct_answer);

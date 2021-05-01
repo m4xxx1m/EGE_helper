@@ -45,4 +45,12 @@
     <string name="solve_tasks">Решайте задания для получения персональных рекомендаций</string>
     <string name="path">https://m4xxx1m.github.io/tasks/</string>
     <string name="show_more">...\n\nПоказать ещё</string>
+    <string name="user_is_initialized">User.isInitialized</string>
+    <string name="dash">\" - \"</string>
+    <string name="amount_html">/amount.html</string>
+    <string name="slash">/</string>
+    <string name="html">.html</string>
+    <string name="png">.png</string>
+    <string name="your_result">\"Ваш результат: \"</string>
+    <string name="out_of">\" из \"</string>
 </resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="theory_names_russian">
+        <item>Рекомендации по самостоятельной подготовке к ЕГЭ по русскому языку</item>
+        <item>Фонетика</item>
+        <item>Орфоэпический словник</item>
+        <item>Лексика и фразеология</item>
+        <item>Словарик паронимов</item>
+        <item>Грамматика. Морфология</item>
+        <item>Грамматика. Синтаксис</item>
+        <item>Орфография</item>
+        <item>Видеоконсультация по подготовке к ЕГЭ по русскому языку</item>
+    </string-array>
+    <string-array name="theory_paths_russian">
+        <item>http://doc.fipi.ru/o-nas/novosti/metod-rekomendatsii-dlya-vypusknikov-po-sam-podgotovke-k-ekzamenam-2020/russkiy-yazyk-ege.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_1_Fonetika.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_Orfoep_slovnik.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_2_Leksika.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Slovarik_paronimov.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_3_grammatika.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_4_sintaksis.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Rus_5_orfografia.pdf</item>
+        <item>https://www.youtube.com/watch?v=MnL1na2h8aI</item>
+    </string-array>
+    <string-array name="theory_names_maths">
+        <item>Рекомендации по самостоятельной подготовке к ЕГЭ по математике</item>
+        <item>Числа, уравнения, неравенства, функции</item>
+        <item>Практико-ориентированные задачи</item>
+        <item>Алгебра и арифметика</item>
+        <item>Вероятность</item>
+        <item>Рациональные, иррациональные, показательные, логарифмические и тригонометрические выражения</item>
+        <item>Текстовые задания</item>
+        <item>Уравнения</item>
+        <item>Видеоконсультация по подготовке к ЕГЭ по математике</item>
+    </string-array>
+    <string-array name="theory_paths_maths">
+        <item>http://doc.fipi.ru/o-nas/novosti/metod-rekomendatsii-dlya-vypusknikov-po-sam-podgotovke-k-ekzamenam-2020/matematika-profilnaya-ege.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Mat_baz_1_Chisla.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Mat_baz_2_praktik.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Mat_baz_3_algebra.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Mat_baz_3_algebra.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Mat_prof_1.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Matem_pr_2_tekst.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Matem_pr_3%20uravnenia.pdf</item>
+        <item>https://www.youtube.com/watch?v=MGAO7XOz9hs</item>
+    </string-array>
+    <string-array name="theory_names_informatics">
+        <item>Рекомендации по самостоятельной подготовке к ЕГЭ по информатике и ИКТ</item>
+        <item>Информация и информационные процессы. Кодирование информации. Системы счисления</item>
+        <item>Логические основы компьютера</item>
+        <item>Теория игр, игровые стратегии</item>
+        <item>Видеоконсультация по подготовке к ЕГЭ по информатике и ИКТ</item>
+    </string-array>
+    <string-array name="theory_paths_informatics">
+        <item>http://doc.fipi.ru/o-nas/novosti/metod-rekomendatsii-dlya-vypusknikov-po-sam-podgotovke-k-ekzamenam-2020/informatika-ege.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Inf_1_informatia.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Inf_2_osnovy.pdf</item>
+        <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Inf_3_Teoria_igr.pdf</item>
+        <item>https://www.youtube.com/watch?v=9qXxaNSf3Og</item>
+    </string-array>
+</resources>

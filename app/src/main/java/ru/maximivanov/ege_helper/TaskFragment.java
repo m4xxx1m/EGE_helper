@@ -1,6 +1,5 @@
 package ru.maximivanov.ege_helper;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -27,11 +26,10 @@ public class TaskFragment extends Fragment {
         return editText.getText().toString();
     }
 
-    @SuppressLint("SetTextI18n")
     public void set(int num, int taskNum, String taskName, String taskText, Bitmap image) {
         this.num = num;
         try {
-            this.taskName.setText("№" + taskNum + " - " + taskName);
+            this.taskName.setText(getString(R.string.num) + taskNum + getString(R.string.dash) + taskName);
             fullTaskText = taskText;
             if (taskText.length() > 230) {
                 this.taskText.setText(taskText.substring(0, 200) + getString(R.string.show_more));
@@ -50,7 +48,6 @@ public class TaskFragment extends Fragment {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     public void showAllText() {
         String text = taskText.getText().toString();
         if (text.endsWith(getString(R.string.show_more))) {

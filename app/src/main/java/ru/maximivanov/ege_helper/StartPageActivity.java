@@ -11,7 +11,7 @@ public class StartPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SubjectsList.setSubjects(getApplicationContext());
         Files.initialize(getApplicationContext());
-        Files.read();
+        Files.readSharedPref();
         Intent intent = new Intent(StartPageActivity.this, ChoseSubjectsActivity.class);
         startActivity(intent);
         finish();

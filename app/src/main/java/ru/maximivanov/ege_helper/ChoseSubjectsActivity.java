@@ -9,21 +9,6 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/*
-    id предметов:
-        0 - Русский язык
-        1 - Математика профиль
-        2 - Информатика
-        3 - Физика
-        4 - Химия
-        5 - Биология
-        6 - Обществознание
-        7 - Литература
-        8 - География
-        9 - История
-        10 - Английский язык
-*/
-
 // На этой активности пользователь выбирает предметы для дальнейшего изучения
 public class ChoseSubjectsActivity extends AppCompatActivity {
     CheckBox []checkBox;
@@ -64,7 +49,7 @@ public class ChoseSubjectsActivity extends AppCompatActivity {
                     User.setUserSubjectsId(chosenSubjects);
                     User.isInitialized = true;
                     Intent toApp = new Intent(ChoseSubjectsActivity.this, MainPageActivity.class);
-                    Files.writeInt(Files.keys[0], 1); // запись в хранилище телефона, что пользователь заходил в приложение
+                    Files.writeSharedPref(Files.keys[0], 1); // запись в хранилище телефона, что пользователь заходил в приложение
                     Files.insertSubjects(chosenSubjects);
                     startActivity(toApp);
                     finish();

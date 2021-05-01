@@ -1,5 +1,6 @@
 package ru.maximivanov.ege_helper;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
 // класс работает с конкретными заданиями, из которых состоит тест

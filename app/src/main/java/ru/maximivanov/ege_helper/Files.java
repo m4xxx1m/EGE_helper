@@ -26,7 +26,6 @@ public class Files {
     private static final String COLUMN_TASKS_AMOUNT = "tasksAmount";
     private static final String COLUMN_TASKS_SCORE = "testsScore";
 
-    private static final int NUM_COLUMN_ID = 0;
     private static final int NUM_COLUMN_SUBJECT = 1;
     private static final int NUM_COLUMN_TASKS_AMOUNT = 2;
     private static final int NUM_COLUMN_TASKS_SCORE = 3;
@@ -37,7 +36,6 @@ public class Files {
     private static final String SUB_COL_SUB = "SubjectID";
     private static final String SUB_COL_ANSWERS_SCORE = "AnswersScore";
 
-    private static final int NUM_SUB_COL_ID = 0;
     private static final int NUM_SUB_COL_SUB = 1;
     private static final int NUM_SUB_COL_ANSWERS_SCORE = 2;
 
@@ -53,6 +51,7 @@ public class Files {
     }
 
     public static void insertStatistic(int subject, int taskAmount, int testsScore) {
+        // Вставка данных о решённом тесте в базу данных (в таблицу статистики)
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_SUBJECT, subject);
         cv.put(COLUMN_TASKS_AMOUNT, taskAmount);
@@ -61,6 +60,7 @@ public class Files {
     }
 
     public static void insertSubjects(ArrayList<Byte> chosenSubjects) {
+        // Вставка данных о предметах в таблицу статистики (только при первом заходе)
         byte i = 1;
         for (Byte sub : chosenSubjects) {
             ContentValues cv = new ContentValues();
@@ -73,6 +73,7 @@ public class Files {
     }
 
     public static void updateAnswerScore(byte subID, Integer[] scoreArr) {
+        // обновление статистики решённых тестов (нужно для нахождения заданий для повторения)
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < scoreArr.length; ++i) {
             if (i != 0)
@@ -87,12 +88,12 @@ public class Files {
         ContentValues cv = new ContentValues();
         cv.put(SUB_COL_SUB, (int) subID);
         cv.put(SUB_COL_ANSWERS_SCORE, str.toString());
-        Log.d("debug_database", String.valueOf(
-                mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",
-                        new String[] { String.valueOf(subIds.get(subID)) })));
+        mDataBase.update(SUBJECT_TABLE_NAME, cv, SUB_COL_ID + " = ?",
+                        new String[] { String.valueOf(subIds.get(subID)) });
     }
 
     public static void selectSubjects() {
+        // Забор данных о выбранных предметах из базы данных
         Cursor mCursor = mDataBase.query(SUBJECT_TABLE_NAME, null, null, null, null, null, null);
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
@@ -111,6 +112,7 @@ public class Files {
     }
 
     private static void transformToIntAnswersScore(String str, byte subID) {
+        // конвертация текстовой информации о статистике решённых тестов в массив целых чисел
         if (str != null && !str.equals("!")) {
             String[] strArr = str.split(" ");
             Integer[] scoreArr = new Integer[strArr.length];
@@ -127,6 +129,7 @@ public class Files {
     }
 
     public static void selectStatistic() {
+        // Забор данных о статистике из базы данных
         Cursor mCursor = mDataBase.query(STATISTIC_TABLE_NAME, null, null, null, null, null, null);
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
@@ -140,14 +143,14 @@ public class Files {
         }
     }
 
-    public static void writeInt(String key, int fileContents) {
+    public static void writeSharedPref(String key, int fileContents) {
         SharedPreferences sharedPref = context.getSharedPreferences(refKey, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(key, fileContents);
         editor.apply();
     }
 
-    public static void read() {
+    public static void readSharedPref() {
         SharedPreferences sharedPref = context.getSharedPreferences(refKey, Context.MODE_PRIVATE);
         User.userStatistic = new Statistic();
         User.initializeSubjectArray();
@@ -160,10 +163,11 @@ public class Files {
         selectStatistic();
     }
 
-    public static final String[] keys = {"User.isInitialized", "chosenSubjects.size", "chosenSubject"};
+    // Ключи для Shared Preferences
+    public static final String[] keys = {context.getString(R.string.user_is_initialized)};
 
     private static class OpenHelper extends SQLiteOpenHelper {
-
+        // Класс-помощник для базы данных
         OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }

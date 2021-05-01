@@ -41,6 +41,7 @@ public class TheoryPageActivity extends AppCompatActivity {
             roundedRectangle.setPadding(dpToPx(10), dpToPx(7), dpToPx(10), dpToPx(7));
             tasksLayout.addView(roundedRectangle);
             Theory theory = User.getSubject(i).getTheory();
+            theory.initialize(getApplicationContext());
             for (byte j = 0; j < theory.getSize(); j++) {
                 if (j != 0) {
                     View line = new View(this);
