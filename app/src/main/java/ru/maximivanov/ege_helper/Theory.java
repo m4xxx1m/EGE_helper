@@ -46,6 +46,10 @@ public class Theory {
                 names = context.getResources().getStringArray(R.array.theory_names_maths);
                 paths = context.getResources().getStringArray(R.array.theory_paths_maths);
                 break;
+            case 2:
+                names = context.getResources().getStringArray(R.array.theory_names_informatics);
+                paths = context.getResources().getStringArray(R.array.theory_paths_informatics);
+                break;
             default:
                 names = new String[0];
                 paths = new String[0];

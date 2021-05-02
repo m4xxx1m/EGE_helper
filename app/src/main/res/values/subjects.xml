@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="subjects_amount">11</integer>
+    <string-array name="subject_names">
+        <item>@string/russian</item>
+        <item>@string/math_profile</item>
+        <item>@string/informatics</item>
+        <item>@string/physics</item>
+        <item>@string/chemistry</item>
+        <item>@string/biology</item>
+        <item>@string/social_studies</item>
+        <item>@string/literature</item>
+        <item>@string/geography</item>
+        <item>@string/history</item>
+        <item>@string/english</item>
+    </string-array>
+    <integer-array name="subjects_task_amount">
+        <item>26</item>
+        <item>12</item>
+        <item>14</item>
+        <item>26</item>
+        <item>29</item>
+        <item>21</item>
+        <item>20</item>
+        <item>7</item>
+        <item>27</item>
+        <item>19</item>
+        <item>29</item>
+    </integer-array>
+    <integer-array name="choose_subjects_id">
+        <item>@id/russian</item>
+        <item>@id/math_profile</item>
+        <item>@id/informatics</item>
+        <item>@id/physics</item>
+        <item>@id/chemistry</item>
+        <item>@id/biology</item>
+        <item>@id/social_studies</item>
+        <item>@id/literature</item>
+        <item>@id/geography</item>
+        <item>@id/history</item>
+        <item>@id/english</item>
+    </integer-array>
+</resources>

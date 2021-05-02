@@ -23,24 +23,20 @@ public class ChoseSubjectsActivity extends AppCompatActivity {
         }
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_choose_subjects);
-        checkBox = new CheckBox[SubjectsList.subjectsAmount];
+        checkBox = new CheckBox[SubjectsList.getSubjectsAmount()];
         Button button = findViewById(R.id.button_ready);
-        checkBox[0] = findViewById(R.id.russian);
-        checkBox[1] = findViewById(R.id.math_profile);
-        checkBox[2] = findViewById(R.id.informatics);
-        checkBox[3] = findViewById(R.id.physics);
-        checkBox[4] = findViewById(R.id.chemistry);
-        checkBox[5] = findViewById(R.id.biology);
-        checkBox[6] = findViewById(R.id.social_studies);
-        checkBox[7] = findViewById(R.id.literature);
-        checkBox[8] = findViewById(R.id.geography);
-        checkBox[9] = findViewById(R.id.history);
-        checkBox[10] = findViewById(R.id.english);
+
+        int[] idArr = new int[] { R.id.russian, R.id.math_profile, R.id.informatics,
+            R.id.physics, R.id.chemistry, R.id.biology, R.id.social_studies,
+            R.id.literature, R.id.geography, R.id.history, R.id.english };
+        for (int i = 0; i < SubjectsList.getSubjectsAmount(); ++i) {
+            checkBox[i] = findViewById(idArr[i]);
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ArrayList<Byte> chosenSubjects = new ArrayList<>();
-                for (byte i = 0; i < SubjectsList.subjectsAmount; ++i) {
+                for (byte i = 0; i < SubjectsList.getSubjectsAmount(); ++i) {
                     if (checkBox[i].isChecked()) {
                         chosenSubjects.add(i);
                     }

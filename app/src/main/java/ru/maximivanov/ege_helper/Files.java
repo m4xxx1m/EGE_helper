@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +47,7 @@ public class Files {
         refKey = context.getString(R.string.preference_file_key);
         OpenHelper mOpenHelper = new OpenHelper(context);
         mDataBase = mOpenHelper.getWritableDatabase();
+        keys = new String[]{context.getString(R.string.user_is_initialized)};
     }
 
     public static void insertStatistic(int subject, int taskAmount, int testsScore) {
@@ -164,7 +164,7 @@ public class Files {
     }
 
     // Ключи для Shared Preferences
-    public static final String[] keys = {context.getString(R.string.user_is_initialized)};
+    public static String[] keys;
 
     private static class OpenHelper extends SQLiteOpenHelper {
         // Класс-помощник для базы данных
