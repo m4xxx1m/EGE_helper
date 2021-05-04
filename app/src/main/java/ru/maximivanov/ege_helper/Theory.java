@@ -32,8 +32,10 @@ public class Theory {
 
     public void browseToTheory(Context context, int num) {
         // функция переносит пользователя на сайт или видео с теорией
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(paths[num]));
-        context.startActivity(intent);
+        if (paths.length > 0) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(paths[num]));
+            context.startActivity(intent);
+        }
     }
 
     public void initialize(Context context) {
@@ -51,7 +53,7 @@ public class Theory {
                 paths = context.getResources().getStringArray(R.array.theory_paths_informatics);
                 break;
             default:
-                names = new String[0];
+                names = context.getResources().getStringArray(R.array.coming_soon);
                 paths = new String[0];
         }
     }

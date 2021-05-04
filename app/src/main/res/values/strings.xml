@@ -28,7 +28,7 @@
     <string name="theory">Теория</string>
     <string name="statistic">Статистика</string>
     <string name="settings">Настройки</string>
-    <string name="coming_soon">Coming soon!</string>
+    <string name="coming_soon">Coming soon</string>
     <string name="improve_result">Улучшите свой результат</string>
     <string name="last_result">Последний результат</string>
     <string name="solved_no_variants">Вы пока что не решили ни одного варианта</string>
@@ -46,11 +46,22 @@
     <string name="path">https://m4xxx1m.github.io/tasks/</string>
     <string name="show_more">...\n\nПоказать ещё</string>
     <string name="user_is_initialized">User.isInitialized</string>
-    <string name="dash">\" - \"</string>
+    <string name="dash">" - "</string>
     <string name="amount_html">/amount.html</string>
     <string name="slash">/</string>
     <string name="html">.html</string>
     <string name="png">.png</string>
-    <string name="your_result">\"Ваш результат: \"</string>
-    <string name="out_of">\" из \"</string>
+    <string name="your_result">"Ваш результат: "</string>
+    <string name="out_of">" из "</string>
+    <string name="error">Ошибка</string>
+    <string name="wipe_data">Стереть данные</string>
+    <string name="data_wiped" type="id">Данные стёрты</string>
+    <string name="about_title">О приложении</string>
+    <string name="are_you_sure">Вы уверены?</string>
+    <string name="ok">Ок</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="about_text">Это тестовая версия приложения.\nНекоторые функции могут не работать или работать с ошибкой.\nНе реализована функция входа в систему и регистрации.\nНе во всех предметах есть задания.\nПри нахождении багов писать на почту mi4469228@yandex.ru</string>
+    <string name="dialog_tag_wipe_data">Dialog: wipe data</string>
+    <string name="dialog_tag_about">dialog: about</string>
 </resources>

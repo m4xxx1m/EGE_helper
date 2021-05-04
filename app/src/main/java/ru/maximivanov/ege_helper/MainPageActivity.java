@@ -24,6 +24,7 @@ public class MainPageActivity extends AppCompatActivity {
         if (footerFragment != null) {
             footerFragment.changeImg((byte) 1);
         }
+
         TextView firstSubject= findViewById(R.id.first_subject);
         firstSubject.setText(User.getSubject((byte) 0).name);
         firstSubject.setOnClickListener(new View.OnClickListener() {
@@ -33,16 +34,25 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
         LinearLayout varLayout = findViewById(R.id.var_layout);
-        for (int i = 1; i < User.getSubjectsLen(); ++i) {
-            View line = new View(this);
-            line.setLayoutParams(lineParams);
-            line.setBackgroundColor(getColor(R.color.myRed));
-            varLayout.addView(line, i*2-1);
-            TextView subjectName = new TextView(this);
-            subjectName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
-                    LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            subjectName.setClickable(true);
-            subjectName.setFocusable(true);
+        for (int i = 0; i < User.getSubjectsLen(); ++i) {
+            TextView subjectName = null;
+            if (i != 0) {
+                View line = new View(this);
+                line.setLayoutParams(lineParams);
+                line.setBackgroundColor(getColor(R.color.myRed));
+                varLayout.addView(line, i*2-1);
+                subjectName = new TextView(this);
+                subjectName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.
+                        LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                subjectName.setClickable(true);
+                subjectName.setFocusable(true);
+                subjectName.setTextSize(18);
+                varLayout.addView(subjectName, i*2);
+            }
+            else {
+                subjectName = findViewById(R.id.first_subject);
+            }
+            subjectName.setText(User.getSubject((byte) i).name);
             final byte thisSubjectId = (byte) i;
             subjectName.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -50,9 +60,6 @@ public class MainPageActivity extends AppCompatActivity {
                     User.getSubject(thisSubjectId).makeCommonTest(MainPageActivity.this);
                 }
             });
-            subjectName.setTextSize(18);
-            subjectName.setText(User.getSubject((byte) i).name);
-            varLayout.addView(subjectName, i*2);
         }
         updateLastResult();
         updateImproveTasks();
@@ -105,7 +112,7 @@ public class MainPageActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         byte sub = badTasks.get(finalI).id;
                         byte taskNum = badTasks.get(finalI).taskNum;
-                        User.getSubject(sub).makeOneTaskTest(MainPageActivity.this, taskNum);
+                        SubjectsList.getSubject(sub).makeOneTaskTest(MainPageActivity.this, taskNum);
                     }
                 });
                 improveText.setText(badTasks.get(i).toString());

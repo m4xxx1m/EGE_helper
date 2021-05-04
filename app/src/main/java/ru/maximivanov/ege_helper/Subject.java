@@ -49,7 +49,8 @@ public class Subject {
         this.taskAmount = taskAmount;
         tasksAnswersScore = new Integer[taskAmount];
         theory = new Theory(this.id);
-        setTasksNames(context);
+        if (context != null)
+            setTasksNames(context);
     }
 
     public void setTheory() { this.theory = new Theory(id); }
@@ -75,7 +76,7 @@ public class Subject {
             case 8:
             case 9:
             case 10:
-                tasksNames = new String[taskAmount];
+                tasksNames = new String[] { context.getString(R.string.coming_soon) };
                 break;
         }
     }

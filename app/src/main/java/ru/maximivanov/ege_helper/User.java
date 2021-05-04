@@ -12,8 +12,8 @@ public class User {
         return (byte) userSubjectsId.size();
     }
 
-    public static Subject getSubject(byte userSubId) {
-        return SubjectsList.getSubject(userSubjectsId.get(userSubId));
+    public static Subject getSubject(byte userSubNum) {
+        return SubjectsList.getSubject(userSubjectsId.get(userSubNum));
     }
 
     public static void initializeSubjectArray() {

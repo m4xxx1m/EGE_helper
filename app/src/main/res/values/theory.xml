@@ -58,4 +58,7 @@
         <item>http://doc.fipi.ru/navigator-podgotovki/navigator-ege/Inf_3_Teoria_igr.pdf</item>
         <item>https://www.youtube.com/watch?v=9qXxaNSf3Og</item>
     </string-array>
+    <string-array name="coming_soon">
+        <item>@string/coming_soon</item>
+    </string-array>
 </resources>

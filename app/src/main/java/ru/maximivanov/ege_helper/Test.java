@@ -44,12 +44,12 @@ public class Test {
             TaskFragment fragment = (TaskFragment) fm
                     .findFragmentByTag(String.valueOf(i));
             assert fragment != null;
-            if (User.getSubject(id).tasksNames[i-1] != null) {
-                fragment.set(i, i, User.getSubject(id).tasksNames[i-1],
+            if (SubjectsList.getSubject(id).tasksNames[i-1] != null) {
+                fragment.set(i, i, SubjectsList.getSubject(id).tasksNames[i-1],
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
             else {
-                fragment.set(i, i, User.getSubject(id).name,
+                fragment.set(i, i, SubjectsList.getSubject(id).name,
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
         }
@@ -64,12 +64,12 @@ public class Test {
             TaskFragment fragment = (TaskFragment) fm
                     .findFragmentByTag(String.valueOf(i));
             assert fragment != null;
-            if (User.getSubject(id).tasksNames[taskNum-1] != null) {
-                fragment.set(i, taskNum, User.getSubject(id).tasksNames[taskNum-1],
+            if (SubjectsList.getSubject(id).tasksNames[taskNum-1] != null) {
+                fragment.set(i, taskNum, SubjectsList.getSubject(id).tasksNames[taskNum-1],
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
             else {
-                fragment.set(i, taskNum, User.getSubject(id).name,
+                fragment.set(i, taskNum, SubjectsList.getSubject(id).name,
                         String.valueOf(tasks.get(i-1).getTaskText()), tasks.get(i-1).getTaskImage());
             }
         }

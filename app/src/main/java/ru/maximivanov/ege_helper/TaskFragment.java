@@ -29,7 +29,13 @@ public class TaskFragment extends Fragment {
     public void set(int num, int taskNum, String taskName, String taskText, Bitmap image) {
         this.num = num;
         try {
-            this.taskName.setText(getString(R.string.num) + taskNum + getString(R.string.dash) + taskName);
+            if (taskName != null) {
+                this.taskName.setText(getString(R.string.num) + taskNum +
+                        getString(R.string.dash) + taskName);
+            }
+            else {
+                this.taskName.setText(getString(R.string.num) + taskNum);
+            }
             fullTaskText = taskText;
             if (taskText.length() > 230) {
                 this.taskText.setText(taskText.substring(0, 200) + getString(R.string.show_more));

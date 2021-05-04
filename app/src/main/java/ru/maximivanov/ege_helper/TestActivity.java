@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import java.io.IOException;
@@ -46,6 +47,11 @@ public class TestActivity extends AppCompatActivity {
         handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(Message msg) {
+                if (msg.what == 0) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.error),
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 RelativeLayout rl = findViewById(R.id.test_layout);
                 rl.removeView(findViewById(R.id.loading));
                 if (isCommon) {
@@ -114,7 +120,7 @@ public class TestActivity extends AppCompatActivity {
                 // ждём пока taskAmount не изменится
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            error(e);
         }
 
         test.setTaskAmount(taskAmount);
@@ -135,7 +141,7 @@ public class TestActivity extends AppCompatActivity {
     public void commonTestFun() {
         setHandler();
         thread.start();
-        taskAmount = User.getSubject(id).taskAmount;
+        taskAmount = SubjectsList.getSubject(id).taskAmount;
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
         test = new Test(id);
@@ -150,10 +156,17 @@ public class TestActivity extends AppCompatActivity {
 
     }
 
+    private void error(Exception e) {
+        e.printStackTrace();
+        Toast.makeText(getApplicationContext(), getString(R.string.coming_soon), Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
     class TestThread extends Thread {
         private final String zero = "0";
         @Override
         public void run() {
+            Looper.prepare();
             if (isCommon) {
                 common();
             }
@@ -169,13 +182,7 @@ public class TestActivity extends AppCompatActivity {
                 url = new URL(path);
                 in = new Scanner((InputStream) url.getContent());
             } catch (IOException e) {
-                e.printStackTrace();
-                finish();
-                try {
-                    this.join();
-                } catch (InterruptedException er) {
-                    er.printStackTrace();
-                }
+                error(e);
             }
             return in;
         }
@@ -189,13 +196,7 @@ public class TestActivity extends AppCompatActivity {
                 in.close();
             }
             catch (NullPointerException e) {
-                e.printStackTrace();
-                finish();
-                try {
-                    this.join();
-                } catch (InterruptedException er) {
-                    er.printStackTrace();
-                }
+                error(e);
             }
             return (int)(Math.random() * Integer.MAX_VALUE) % amount;
         }
@@ -226,13 +227,7 @@ public class TestActivity extends AppCompatActivity {
                 sc.close();
             }
             catch (NullPointerException e) {
-                e.printStackTrace();
-                finish();
-                try {
-                    this.join();
-                } catch (InterruptedException er) {
-                    er.printStackTrace();
-                }
+                error(e);
             }
             int[] tasksArray = getRandomArray(amount);
             for (byte i = 1; i <= taskAmount; ++i) {
@@ -251,13 +246,7 @@ public class TestActivity extends AppCompatActivity {
                     }
                     in.close();
                 } catch (NullPointerException e) {
-                    e.printStackTrace();
-                    finish();
-                    try {
-                        this.join();
-                    } catch (InterruptedException er) {
-                        er.printStackTrace();
-                    }
+                    error(e);
                 }
                 Bitmap bitmap = null;
                 if (hasImage) {
@@ -266,13 +255,7 @@ public class TestActivity extends AppCompatActivity {
                                 taskNum + getString(R.string.slash) + tasksArray[i-1] + getString(R.string.png));
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
-                        e.printStackTrace();
-                        finish();
-                        try {
-                            this.join();
-                        } catch (InterruptedException er) {
-                            er.printStackTrace();
-                        }
+                        error(e);
                     }
                 }
                 test.addTask(new Task(id, i, bitmap, String.valueOf(str), answer));
@@ -297,13 +280,7 @@ public class TestActivity extends AppCompatActivity {
                     }
                     in.close();
                 } catch (NullPointerException | NoSuchElementException e) {
-                    e.printStackTrace();
-                    finish();
-                    try {
-                        this.join();
-                    } catch (InterruptedException er) {
-                        er.printStackTrace();
-                    }
+                    error(e);
                 }
                 Bitmap bitmap = null;
                 if (hasImage) {
@@ -312,18 +289,23 @@ public class TestActivity extends AppCompatActivity {
                                 i + getString(R.string.slash) + randomTask(i) + getString(R.string.png));
                         bitmap = BitmapFactory.decodeStream((InputStream) imageUrl.getContent());
                     } catch (IOException e) {
-                        e.printStackTrace();
-                        finish();
-                        try {
-                            this.join();
-                        } catch (InterruptedException er) {
-                            er.printStackTrace();
-                        }
+                        error(e);
                     }
                 }
                 test.addTask(new Task(id, i, bitmap, String.valueOf(str), answer));
             }
             handler.sendEmptyMessage(1);
+        }
+
+        private void error(Exception e) {
+            e.printStackTrace();
+            handler.sendEmptyMessage(0);
+            finish();
+            try {
+                this.join();
+            } catch (InterruptedException er) {
+                er.printStackTrace();
+            }
         }
     }
 }
