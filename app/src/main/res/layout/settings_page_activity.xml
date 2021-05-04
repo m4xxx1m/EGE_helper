@@ -16,9 +16,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="@string/sign_in"
+                android:text="@string/sign_up"
                 android:textSize="18sp"
-                android:id="@+id/sign_in_button"
+                android:id="@+id/sign_up_button"
                 android:clickable="true"
                 android:focusable="true" />
             <View
@@ -31,8 +31,22 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:layout_marginStart="15dp"
-                android:text="@string/sign_up"
-                android:id="@+id/sign_up_button"
+                android:text="@string/wipe_data"
+                android:id="@+id/wipe_data_button"
+                android:clickable="true"
+                android:focusable="true" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="13dp"
+                android:background="#20000000" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:text="@string/about_title"
+                android:id="@+id/about_button"
                 android:clickable="true"
                 android:focusable="true" />
             <View

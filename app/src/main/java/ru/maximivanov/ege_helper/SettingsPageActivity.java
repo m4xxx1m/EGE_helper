@@ -1,8 +1,11 @@
 package ru.maximivanov.ege_helper;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 // Экран настроек
@@ -16,13 +19,6 @@ public class SettingsPageActivity extends AppCompatActivity {
         if (footerFragment != null) {
             footerFragment.changeImg((byte) 5);
         }
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingsPageActivity.this, LogInActivity.class);
-                startActivity(intent);
-            }
-        });
         findViewById(R.id.sign_up_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +26,21 @@ public class SettingsPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.wipe_data_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentDialog dialog = new FragmentDialog(FragmentDialog.WIPE_DATA, getApplicationContext());
+                dialog.show(getSupportFragmentManager(), getString(R.string.dialog_tag_wipe_data));
 
+            }
+        });
+        findViewById(R.id.about_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentDialog dialog = new FragmentDialog(FragmentDialog.ABOUT, getApplicationContext());
+                dialog.show(getSupportFragmentManager(), getString(R.string.dialog_tag_about));
+            }
+        });
     }
 
     public void onClickFooter(View v) {
