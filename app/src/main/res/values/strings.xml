@@ -17,7 +17,8 @@
     <string name="sign_in">Войти</string>
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
-    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_up">Зарегистрироваться (coming soon)</string>
+    <string name="notifications_settings">Настройки уведомлений (coming soon)</string>
     <string name="wrong_login_or_password">Неверный логин или пароль</string>
     <string name="main_page">Главная</string>
     <string name="ege_var">Варианты ЕГЭ</string>
