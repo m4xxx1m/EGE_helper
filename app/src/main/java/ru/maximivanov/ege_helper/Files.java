@@ -2,7 +2,6 @@ package ru.maximivanov.ege_helper;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -12,8 +11,6 @@ import java.util.HashMap;
 
 // класс для работы с файлами
 public class Files {
-    private static String refKey;
-    private static Context context;
 
     private static final String DATABASE_NAME = "ru.maximivanov.ege_helper.db";
     private static final int DATABASE_VERSION = 1;
@@ -43,11 +40,8 @@ public class Files {
     private static final HashMap<Byte, Byte> subIds = new HashMap<>();
 
     public static void initialize(Context context) {
-        Files.context = context;
-        refKey = context.getString(R.string.preference_file_key);
         OpenHelper mOpenHelper = new OpenHelper(context);
         mDataBase = mOpenHelper.getWritableDatabase();
-        keys = new String[]{context.getString(R.string.user_is_initialized)};
     }
 
     public static void insertStatistic(int subject, int taskAmount, int testsScore) {
@@ -94,6 +88,8 @@ public class Files {
 
     public static void selectSubjects() {
         // Забор данных о выбранных предметах из базы данных
+        User.userStatistic = new Statistic();
+        User.initializeSubjectArray();
         Cursor mCursor = mDataBase.query(SUBJECT_TABLE_NAME, null, null, null, null, null, null);
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
@@ -108,7 +104,10 @@ public class Files {
                 i++;
             } while (mCursor.moveToNext());
             User.setUserSubjectsId(chosenSubject);
+            User.isInitialized = true;
+            selectStatistic();
         }
+        mCursor.close();
     }
 
     private static void transformToIntAnswersScore(String str, byte subID) {
@@ -141,30 +140,8 @@ public class Files {
                 User.userStatistic.addTest(test);
             } while (mCursor.moveToNext());
         }
+        mCursor.close();
     }
-
-    public static void writeSharedPref(String key, int fileContents) {
-        SharedPreferences sharedPref = context.getSharedPreferences(refKey, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(key, fileContents);
-        editor.apply();
-    }
-
-    public static void readSharedPref() {
-        SharedPreferences sharedPref = context.getSharedPreferences(refKey, Context.MODE_PRIVATE);
-        User.userStatistic = new Statistic();
-        User.initializeSubjectArray();
-
-        User.isInitialized = sharedPref.getInt(keys[0], 0) != 0;
-        if (!User.isInitialized) {
-            return;
-        }
-        selectSubjects();
-        selectStatistic();
-    }
-
-    // Ключи для Shared Preferences
-    public static String[] keys;
 
     private static class OpenHelper extends SQLiteOpenHelper {
         // Класс-помощник для базы данных

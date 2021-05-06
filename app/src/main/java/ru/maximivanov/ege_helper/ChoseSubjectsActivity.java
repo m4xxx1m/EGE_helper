@@ -45,7 +45,6 @@ public class ChoseSubjectsActivity extends AppCompatActivity {
                     User.setUserSubjectsId(chosenSubjects);
                     User.isInitialized = true;
                     Intent toApp = new Intent(ChoseSubjectsActivity.this, MainPageActivity.class);
-                    Files.writeSharedPref(Files.keys[0], 1); // запись в хранилище телефона, что пользователь заходил в приложение
                     Files.insertSubjects(chosenSubjects);
                     startActivity(toApp);
                     finish();
