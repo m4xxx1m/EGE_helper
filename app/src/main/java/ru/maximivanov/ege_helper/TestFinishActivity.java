@@ -9,14 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class TestFinishActivity extends AppCompatActivity {
-    Test test;
-    ArrayList<Task> tasks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_finish);
-        test = User.userStatistic.getLastTest();
-        tasks = test.getTasks();
+        Test test = User.userStatistic.getLastTest();
+        ArrayList<Task> tasks = test.getTasks();
         findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

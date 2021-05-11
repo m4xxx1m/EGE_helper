@@ -35,7 +35,7 @@ public class MainPageActivity extends AppCompatActivity {
         });
         LinearLayout varLayout = findViewById(R.id.var_layout);
         for (int i = 0; i < User.getSubjectsLen(); ++i) {
-            TextView subjectName = null;
+            TextView subjectName;
             if (i != 0) {
                 View line = new View(this);
                 line.setLayoutParams(lineParams);

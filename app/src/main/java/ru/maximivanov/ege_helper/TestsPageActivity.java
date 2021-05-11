@@ -43,13 +43,11 @@ public class TestsPageActivity extends AppCompatActivity {
                     .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 taskButParams.setMargins(0, dpToPx(4), 0, dpToPx(4));
                 taskButton.setLayoutParams(taskButParams);
-                try {
-                    taskButton.setText(j + ") " + User.getSubject(i).tasksNames[j-1]);
-                }
-                catch (NullPointerException e) {
-                    e.printStackTrace();
+                String taskName = User.getSubject(i).tasksNames[j-1];
+                if (taskName != null)
+                    taskButton.setText(j + ") " + taskName);
+                else
                     taskButton.setText(j + ") " + User.getSubject(i).name);
-                }
                 taskButton.setClickable(true);
                 taskButton.setFocusable(true);
                 taskButton.setTextSize(18);
@@ -60,12 +58,18 @@ public class TestsPageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         User.getSubject(finalI).makeOneTaskTest(TestsPageActivity.this, finalJ);
-                        finish();
+                        // finish();
                     }
                 });
                 roundedRectangle.addView(taskButton);
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ((LinearLayout)findViewById(R.id.tests_place_holder)).removeAllViewsInLayout();
+        super.onDestroy();
     }
 
     public void onClickFooter(View v) {

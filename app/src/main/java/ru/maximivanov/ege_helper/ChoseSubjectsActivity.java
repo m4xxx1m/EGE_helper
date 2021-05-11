@@ -11,7 +11,7 @@ import java.util.Objects;
 
 // На этой активности пользователь выбирает предметы для дальнейшего изучения
 public class ChoseSubjectsActivity extends AppCompatActivity {
-    CheckBox []checkBox;
+    private CheckBox []checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

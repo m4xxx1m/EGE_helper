@@ -19,19 +19,18 @@ import java.util.*;
 public class TestActivity extends AppCompatActivity {
     private Test test;
     private byte id;
-    private int taskAmount = -1;
+    private Integer taskAmount = -1;
     private Handler handler;
     private byte taskNum;
     private ArrayList<TaskFragment> taskArr;
     private boolean isCommon;
-    private TestThread thread;
+    private final TestThread thread = new TestThread();
     private FinishButtonFragment buttonFragment;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_test);
-        thread = new TestThread();
         id = getIntent().getByteExtra(Subject.SUBJECT, (byte) 0);
         isCommon = getIntent().getBooleanExtra(Subject.IS_COMMON, true);
         if (isCommon) {
@@ -122,7 +121,6 @@ public class TestActivity extends AppCompatActivity {
         } catch (Exception e) {
             error(e);
         }
-
         test.setTaskAmount(taskAmount);
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
@@ -141,7 +139,7 @@ public class TestActivity extends AppCompatActivity {
     public void commonTestFun() {
         setHandler();
         thread.start();
-        taskAmount = SubjectsList.getSubject(id).taskAmount;
+        taskAmount = (int)SubjectsList.getSubject(id).taskAmount;
         taskArr = new ArrayList<>(taskAmount);
         taskArr.add(0, null);
         test = new Test(id);
@@ -217,9 +215,9 @@ public class TestActivity extends AppCompatActivity {
         }
 
         private void oneTask() {
+            int amount = 0;
             Scanner sc = getStream(getString(R.string.path) + id + getString(R.string.slash) + taskNum
                     + getString(R.string.amount_html));
-            int amount = 0;
             try {
                 amount = sc.nextInt();
                 taskAmount = Math.min(amount, 10);

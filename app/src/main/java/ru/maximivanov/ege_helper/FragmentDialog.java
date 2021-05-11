@@ -7,15 +7,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 public class FragmentDialog extends DialogFragment implements DialogInterface.OnClickListener {
-    int what;
-    String title;
-    String text;
-    String posBut;
-    String negBut;
-    Context context;
+    private final int what;
+    private String title;
+    private String text;
+    private String posBut;
+    private String negBut;
+    private final Context context;
     public static final int ABOUT = 0;
     public static final int WIPE_DATA = 1;
 
@@ -36,6 +37,8 @@ public class FragmentDialog extends DialogFragment implements DialogInterface.On
         }
     }
 
+
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle bundle) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
