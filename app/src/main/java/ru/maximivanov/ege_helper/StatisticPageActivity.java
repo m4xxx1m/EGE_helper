@@ -28,21 +28,23 @@ public class StatisticPageActivity extends AppCompatActivity {
             firstName.setText(SubjectsList.getSubject(test.id).name);
             int score = test.getTestScore();
             int amount = test.getTaskAmount();
-            firstPercent.setText(100 * score / amount + "%");
+            firstPercent.setText(100 * score / amount + getString(R.string.percent));
         }
         LinearLayout placeHolder = findViewById(R.id.statistic_place_holder);
 
         LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(LinearLayout.
                 LayoutParams.MATCH_PARENT, dpToPx(3));
         lineParams.setMargins(0, dpToPx(5), 0, dpToPx(5));
-        LinearLayout.LayoutParams relativeParams = new LinearLayout.LayoutParams(LinearLayout
-                .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams nameParams = new RelativeLayout.LayoutParams(RelativeLayout
-                .LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams percentParams = new RelativeLayout.LayoutParams(RelativeLayout
-                .LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        percentParams.addRule(RelativeLayout.ALIGN_PARENT_END);
+
         for (int i = size - 2; i >= 0; --i) {
+            LinearLayout.LayoutParams relativeParams = new LinearLayout.LayoutParams(LinearLayout
+                    .LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams nameParams = new RelativeLayout.LayoutParams(RelativeLayout
+                    .LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams percentParams = new RelativeLayout.LayoutParams(RelativeLayout
+                    .LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            percentParams.addRule(RelativeLayout.ALIGN_PARENT_END);
+
             View line = new View(this);
             line.setLayoutParams(lineParams);
             line.setBackgroundColor(getColor(R.color.myRed));
@@ -64,7 +66,7 @@ public class StatisticPageActivity extends AppCompatActivity {
             percent.setTextSize(18);
             int score = test.getTestScore();
             int amount = test.getTaskAmount();
-            percent.setText(100 * score / amount + "%");
+            percent.setText(100 * score / amount + getString(R.string.percent));
             relativeLayout.addView(percent);
         }
     }

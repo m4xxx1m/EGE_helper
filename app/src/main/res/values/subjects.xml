@@ -27,17 +27,4 @@
         <item>1</item> <!-- 19 -->
         <item>1</item> <!-- 29 -->
     </integer-array>
-    <integer-array name="choose_subjects_id">
-        <item>@id/russian</item>
-        <item>@id/math_profile</item>
-        <item>@id/informatics</item>
-        <item>@id/physics</item>
-        <item>@id/chemistry</item>
-        <item>@id/biology</item>
-        <item>@id/social_studies</item>
-        <item>@id/literature</item>
-        <item>@id/geography</item>
-        <item>@id/history</item>
-        <item>@id/english</item>
-    </integer-array>
 </resources>

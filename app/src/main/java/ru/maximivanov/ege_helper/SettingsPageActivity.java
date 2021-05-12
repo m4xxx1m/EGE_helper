@@ -1,11 +1,8 @@
 package ru.maximivanov.ege_helper;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 // Экран настроек
